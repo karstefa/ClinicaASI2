@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ViewHorarioAtencionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{lenguajes.ViewHorarioAtencionLabel_idHorarioAtencion}"/>
+                    <h:outputText value="#{horarioAtencionController.selected.idHorarioAtencion}" title="#{lenguajes.ViewHorarioAtencionTitle_idHorarioAtencion}"/>
+                    <h:outputText value="#{lenguajes.ViewHorarioAtencionLabel_usuarioActualiza}"/>
+                    <h:outputText value="#{horarioAtencionController.selected.usuarioActualiza}" title="#{lenguajes.ViewHorarioAtencionTitle_usuarioActualiza}"/>
+                    <h:outputText value="#{lenguajes.ViewHorarioAtencionLabel_activo}"/>
+                    <h:outputText value="#{horarioAtencionController.selected.activo}" title="#{lenguajes.ViewHorarioAtencionTitle_activo}"/>
+                    <h:outputText value="#{lenguajes.ViewHorarioAtencionLabel_dia}"/>
+                    <h:outputText value="#{horarioAtencionController.selected.dia}" title="#{lenguajes.ViewHorarioAtencionTitle_dia}"/>
+                    <h:outputText value="#{lenguajes.ViewHorarioAtencionLabel_horaInicio}"/>
+                    <h:outputText value="#{horarioAtencionController.selected.horaInicio}" title="#{lenguajes.ViewHorarioAtencionTitle_horaInicio}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{lenguajes.ViewHorarioAtencionLabel_horaFin}"/>
+                    <h:outputText value="#{horarioAtencionController.selected.horaFin}" title="#{lenguajes.ViewHorarioAtencionTitle_horaFin}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{lenguajes.ViewHorarioAtencionLabel_descripcion}"/>
+                    <h:outputText value="#{horarioAtencionController.selected.descripcion}" title="#{lenguajes.ViewHorarioAtencionTitle_descripcion}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{horarioAtencionController.destroyAndView}" value="#{lenguajes.ViewHorarioAtencionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{lenguajes.ViewHorarioAtencionEditLink}"/>
+                <br />
+                <h:commandLink action="#{horarioAtencionController.prepareCreate}" value="#{lenguajes.ViewHorarioAtencionCreateLink}" />
+                <br />
+                <h:commandLink action="#{horarioAtencionController.prepareList}" value="#{lenguajes.ViewHorarioAtencionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ViewHorarioAtencionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

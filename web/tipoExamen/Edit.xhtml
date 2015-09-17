@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.EditTipoExamenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.EditTipoExamenLabel_idTipoExamen}" for="idTipoExamen" />
+                    <h:inputText id="idTipoExamen" value="#{tipoExamenController.selected.idTipoExamen}" title="#{lenguajes.EditTipoExamenTitle_idTipoExamen}" required="true" requiredMessage="#{lenguajes.EditTipoExamenRequiredMessage_idTipoExamen}"/>
+                    <h:outputLabel value="#{lenguajes.EditTipoExamenLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{tipoExamenController.selected.usuarioActualiza}" title="#{lenguajes.EditTipoExamenTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.EditTipoExamenRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.EditTipoExamenLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{tipoExamenController.selected.nombre}" title="#{lenguajes.EditTipoExamenTitle_nombre}" required="true" requiredMessage="#{lenguajes.EditTipoExamenRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{lenguajes.EditTipoExamenLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{tipoExamenController.selected.activo}" title="#{lenguajes.EditTipoExamenTitle_activo}" required="true" requiredMessage="#{lenguajes.EditTipoExamenRequiredMessage_activo}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{tipoExamenController.update}" value="#{lenguajes.EditTipoExamenSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{lenguajes.EditTipoExamenViewLink}"/>
+                <br />
+                <h:commandLink action="#{tipoExamenController.prepareList}" value="#{lenguajes.EditTipoExamenShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.EditTipoExamenIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

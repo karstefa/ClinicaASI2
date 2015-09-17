@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.CreateConsultaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.CreateConsultaLabel_idConsulta}" for="idConsulta" />
+                    <h:inputText id="idConsulta" value="#{consultaController.selected.idConsulta}" title="#{lenguajes.CreateConsultaTitle_idConsulta}" required="true" requiredMessage="#{lenguajes.CreateConsultaRequiredMessage_idConsulta}"/>
+                    <h:outputLabel value="#{lenguajes.CreateConsultaLabel_fechaHora}" for="fechaHora" />
+                    <h:inputText id="fechaHora" value="#{consultaController.selected.fechaHora}" title="#{lenguajes.CreateConsultaTitle_fechaHora}" required="true" requiredMessage="#{lenguajes.CreateConsultaRequiredMessage_fechaHora}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{lenguajes.CreateConsultaLabel_motivo}" for="motivo" />
+                    <h:inputText id="motivo" value="#{consultaController.selected.motivo}" title="#{lenguajes.CreateConsultaTitle_motivo}" required="true" requiredMessage="#{lenguajes.CreateConsultaRequiredMessage_motivo}"/>
+                    <h:outputLabel value="#{lenguajes.CreateConsultaLabel_resultado}" for="resultado" />
+                    <h:inputTextarea rows="4" cols="30" id="resultado" value="#{consultaController.selected.resultado}" title="#{lenguajes.CreateConsultaTitle_resultado}" required="true" requiredMessage="#{lenguajes.CreateConsultaRequiredMessage_resultado}"/>
+                    <h:outputLabel value="#{lenguajes.CreateConsultaLabel_idPaciente}" for="idPaciente" />
+                    <h:selectOneMenu id="idPaciente" value="#{consultaController.selected.idPaciente}" title="#{lenguajes.CreateConsultaTitle_idPaciente}" required="true" requiredMessage="#{lenguajes.CreateConsultaRequiredMessage_idPaciente}">
+                        <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{lenguajes.CreateConsultaLabel_idEstadoConsulta}" for="idEstadoConsulta" />
+                    <h:selectOneMenu id="idEstadoConsulta" value="#{consultaController.selected.idEstadoConsulta}" title="#{lenguajes.CreateConsultaTitle_idEstadoConsulta}" required="true" requiredMessage="#{lenguajes.CreateConsultaRequiredMessage_idEstadoConsulta}">
+                        <f:selectItems value="#{estadoConsultaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{lenguajes.CreateConsultaLabel_empleadoHorario}" for="empleadoHorario" />
+                    <h:selectOneMenu id="empleadoHorario" value="#{consultaController.selected.empleadoHorario}" title="#{lenguajes.CreateConsultaTitle_empleadoHorario}" required="true" requiredMessage="#{lenguajes.CreateConsultaRequiredMessage_empleadoHorario}">
+                        <f:selectItems value="#{empleadoHorarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{consultaController.create}" value="#{lenguajes.CreateConsultaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{consultaController.prepareList}" value="#{lenguajes.CreateConsultaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.CreateConsultaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.EditPacienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.EditPacienteLabel_idPaciente}" for="idPaciente" />
+                    <h:inputText id="idPaciente" value="#{pacienteController.selected.idPaciente}" title="#{lenguajes.EditPacienteTitle_idPaciente}" required="true" requiredMessage="#{lenguajes.EditPacienteRequiredMessage_idPaciente}"/>
+                    <h:outputLabel value="#{lenguajes.EditPacienteLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{pacienteController.selected.usuarioActualiza}" title="#{lenguajes.EditPacienteTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.EditPacienteRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.EditPacienteLabel_fechaCreacion}" for="fechaCreacion" />
+                    <h:inputText id="fechaCreacion" value="#{pacienteController.selected.fechaCreacion}" title="#{lenguajes.EditPacienteTitle_fechaCreacion}" required="true" requiredMessage="#{lenguajes.EditPacienteRequiredMessage_fechaCreacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{lenguajes.EditPacienteLabel_idPersona}" for="idPersona" />
+                    <h:selectOneMenu id="idPersona" value="#{pacienteController.selected.idPersona}" title="#{lenguajes.EditPacienteTitle_idPersona}" required="true" requiredMessage="#{lenguajes.EditPacienteRequiredMessage_idPersona}">
+                        <f:selectItems value="#{personaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{lenguajes.EditPacienteLabel_idEstadoPaciente}" for="idEstadoPaciente" />
+                    <h:selectOneMenu id="idEstadoPaciente" value="#{pacienteController.selected.idEstadoPaciente}" title="#{lenguajes.EditPacienteTitle_idEstadoPaciente}" required="true" requiredMessage="#{lenguajes.EditPacienteRequiredMessage_idEstadoPaciente}">
+                        <f:selectItems value="#{estadoPacienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{pacienteController.update}" value="#{lenguajes.EditPacienteSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{lenguajes.EditPacienteViewLink}"/>
+                <br />
+                <h:commandLink action="#{pacienteController.prepareList}" value="#{lenguajes.EditPacienteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.EditPacienteIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

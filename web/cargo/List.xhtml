@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ListCargoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{lenguajes.ListCargoEmpty}" rendered="#{cargoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{cargoController.items.rowCount > 0}">
+                    <h:outputText value="#{cargoController.pagination.pageFirstItem + 1}..#{cargoController.pagination.pageLastItem + 1}/#{cargoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{cargoController.previous}" value="#{lenguajes.Previous} #{cargoController.pagination.pageSize}" rendered="#{cargoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{cargoController.next}" value="#{lenguajes.Next} #{cargoController.pagination.pageSize}" rendered="#{cargoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{cargoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListCargoTitle_idCargo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCargo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListCargoTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListCargoTitle_usuarioActualiza}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuarioActualiza}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListCargoTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListCargoTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListCargoTitle_parentIDCARGO}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parentIDCARGO}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{cargoController.prepareView}" value="#{lenguajes.ListCargoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cargoController.prepareEdit}" value="#{lenguajes.ListCargoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cargoController.destroy}" value="#{lenguajes.ListCargoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{cargoController.prepareCreate}" value="#{lenguajes.ListCargoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ListCargoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

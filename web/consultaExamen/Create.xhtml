@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.CreateConsultaExamenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.CreateConsultaExamenLabel_idConsultaExamen}" for="idConsultaExamen" />
+                    <h:inputText id="idConsultaExamen" value="#{consultaExamenController.selected.idConsultaExamen}" title="#{lenguajes.CreateConsultaExamenTitle_idConsultaExamen}" required="true" requiredMessage="#{lenguajes.CreateConsultaExamenRequiredMessage_idConsultaExamen}"/>
+                    <h:outputLabel value="#{lenguajes.CreateConsultaExamenLabel_fechaExamen}" for="fechaExamen" />
+                    <h:inputText id="fechaExamen" value="#{consultaExamenController.selected.fechaExamen}" title="#{lenguajes.CreateConsultaExamenTitle_fechaExamen}" required="true" requiredMessage="#{lenguajes.CreateConsultaExamenRequiredMessage_fechaExamen}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{lenguajes.CreateConsultaExamenLabel_descuento}" for="descuento" />
+                    <h:inputText id="descuento" value="#{consultaExamenController.selected.descuento}" title="#{lenguajes.CreateConsultaExamenTitle_descuento}" required="true" requiredMessage="#{lenguajes.CreateConsultaExamenRequiredMessage_descuento}"/>
+                    <h:outputLabel value="#{lenguajes.CreateConsultaExamenLabel_precioExamen}" for="precioExamen" />
+                    <h:inputText id="precioExamen" value="#{consultaExamenController.selected.precioExamen}" title="#{lenguajes.CreateConsultaExamenTitle_precioExamen}" required="true" requiredMessage="#{lenguajes.CreateConsultaExamenRequiredMessage_precioExamen}"/>
+                    <h:outputLabel value="#{lenguajes.CreateConsultaExamenLabel_resultadoExamen}" for="resultadoExamen" />
+                    <h:inputTextarea rows="4" cols="30" id="resultadoExamen" value="#{consultaExamenController.selected.resultadoExamen}" title="#{lenguajes.CreateConsultaExamenTitle_resultadoExamen}" required="true" requiredMessage="#{lenguajes.CreateConsultaExamenRequiredMessage_resultadoExamen}"/>
+                    <h:outputLabel value="#{lenguajes.CreateConsultaExamenLabel_idExamen}" for="idExamen" />
+                    <h:selectOneMenu id="idExamen" value="#{consultaExamenController.selected.idExamen}" title="#{lenguajes.CreateConsultaExamenTitle_idExamen}" required="true" requiredMessage="#{lenguajes.CreateConsultaExamenRequiredMessage_idExamen}">
+                        <f:selectItems value="#{examenController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{lenguajes.CreateConsultaExamenLabel_idEstadoExamen}" for="idEstadoExamen" />
+                    <h:selectOneMenu id="idEstadoExamen" value="#{consultaExamenController.selected.idEstadoExamen}" title="#{lenguajes.CreateConsultaExamenTitle_idEstadoExamen}" required="true" requiredMessage="#{lenguajes.CreateConsultaExamenRequiredMessage_idEstadoExamen}">
+                        <f:selectItems value="#{estadoExamenController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{lenguajes.CreateConsultaExamenLabel_idConsulta}" for="idConsulta" />
+                    <h:selectOneMenu id="idConsulta" value="#{consultaExamenController.selected.idConsulta}" title="#{lenguajes.CreateConsultaExamenTitle_idConsulta}" required="true" requiredMessage="#{lenguajes.CreateConsultaExamenRequiredMessage_idConsulta}">
+                        <f:selectItems value="#{consultaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{consultaExamenController.create}" value="#{lenguajes.CreateConsultaExamenSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{consultaExamenController.prepareList}" value="#{lenguajes.CreateConsultaExamenShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.CreateConsultaExamenIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

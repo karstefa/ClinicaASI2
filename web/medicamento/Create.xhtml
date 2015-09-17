@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.CreateMedicamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.CreateMedicamentoLabel_idMedicamento}" for="idMedicamento" />
+                    <h:inputText id="idMedicamento" value="#{medicamentoController.selected.idMedicamento}" title="#{lenguajes.CreateMedicamentoTitle_idMedicamento}" required="true" requiredMessage="#{lenguajes.CreateMedicamentoRequiredMessage_idMedicamento}"/>
+                    <h:outputLabel value="#{lenguajes.CreateMedicamentoLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{medicamentoController.selected.usuarioActualiza}" title="#{lenguajes.CreateMedicamentoTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.CreateMedicamentoRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.CreateMedicamentoLabel_cantidadMinima}" for="cantidadMinima" />
+                    <h:inputText id="cantidadMinima" value="#{medicamentoController.selected.cantidadMinima}" title="#{lenguajes.CreateMedicamentoTitle_cantidadMinima}" required="true" requiredMessage="#{lenguajes.CreateMedicamentoRequiredMessage_cantidadMinima}"/>
+                    <h:outputLabel value="#{lenguajes.CreateMedicamentoLabel_cantidadMaxima}" for="cantidadMaxima" />
+                    <h:inputText id="cantidadMaxima" value="#{medicamentoController.selected.cantidadMaxima}" title="#{lenguajes.CreateMedicamentoTitle_cantidadMaxima}" required="true" requiredMessage="#{lenguajes.CreateMedicamentoRequiredMessage_cantidadMaxima}"/>
+                    <h:outputLabel value="#{lenguajes.CreateMedicamentoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{medicamentoController.selected.nombre}" title="#{lenguajes.CreateMedicamentoTitle_nombre}" required="true" requiredMessage="#{lenguajes.CreateMedicamentoRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{lenguajes.CreateMedicamentoLabel_idProveedor}" for="idProveedor" />
+                    <h:selectOneMenu id="idProveedor" value="#{medicamentoController.selected.idProveedor}" title="#{lenguajes.CreateMedicamentoTitle_idProveedor}" required="true" requiredMessage="#{lenguajes.CreateMedicamentoRequiredMessage_idProveedor}">
+                        <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{lenguajes.CreateMedicamentoLabel_idFabricante}" for="idFabricante" />
+                    <h:selectOneMenu id="idFabricante" value="#{medicamentoController.selected.idFabricante}" title="#{lenguajes.CreateMedicamentoTitle_idFabricante}" required="true" requiredMessage="#{lenguajes.CreateMedicamentoRequiredMessage_idFabricante}">
+                        <f:selectItems value="#{fabricanteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{medicamentoController.create}" value="#{lenguajes.CreateMedicamentoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{medicamentoController.prepareList}" value="#{lenguajes.CreateMedicamentoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.CreateMedicamentoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

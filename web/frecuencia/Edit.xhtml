@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.EditFrecuenciaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.EditFrecuenciaLabel_idFrecuencia}" for="idFrecuencia" />
+                    <h:inputText id="idFrecuencia" value="#{frecuenciaController.selected.idFrecuencia}" title="#{lenguajes.EditFrecuenciaTitle_idFrecuencia}" required="true" requiredMessage="#{lenguajes.EditFrecuenciaRequiredMessage_idFrecuencia}"/>
+                    <h:outputLabel value="#{lenguajes.EditFrecuenciaLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{frecuenciaController.selected.activo}" title="#{lenguajes.EditFrecuenciaTitle_activo}" required="true" requiredMessage="#{lenguajes.EditFrecuenciaRequiredMessage_activo}"/>
+                    <h:outputLabel value="#{lenguajes.EditFrecuenciaLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{frecuenciaController.selected.usuarioActualiza}" title="#{lenguajes.EditFrecuenciaTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.EditFrecuenciaRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.EditFrecuenciaLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{frecuenciaController.selected.nombre}" title="#{lenguajes.EditFrecuenciaTitle_nombre}" required="true" requiredMessage="#{lenguajes.EditFrecuenciaRequiredMessage_nombre}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{frecuenciaController.update}" value="#{lenguajes.EditFrecuenciaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{lenguajes.EditFrecuenciaViewLink}"/>
+                <br />
+                <h:commandLink action="#{frecuenciaController.prepareList}" value="#{lenguajes.EditFrecuenciaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.EditFrecuenciaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

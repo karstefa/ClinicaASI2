@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.EditEstadoPacienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.EditEstadoPacienteLabel_idEstadoPaciente}" for="idEstadoPaciente" />
+                    <h:inputText id="idEstadoPaciente" value="#{estadoPacienteController.selected.idEstadoPaciente}" title="#{lenguajes.EditEstadoPacienteTitle_idEstadoPaciente}" required="true" requiredMessage="#{lenguajes.EditEstadoPacienteRequiredMessage_idEstadoPaciente}"/>
+                    <h:outputLabel value="#{lenguajes.EditEstadoPacienteLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{estadoPacienteController.selected.activo}" title="#{lenguajes.EditEstadoPacienteTitle_activo}" required="true" requiredMessage="#{lenguajes.EditEstadoPacienteRequiredMessage_activo}"/>
+                    <h:outputLabel value="#{lenguajes.EditEstadoPacienteLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{estadoPacienteController.selected.usuarioActualiza}" title="#{lenguajes.EditEstadoPacienteTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.EditEstadoPacienteRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.EditEstadoPacienteLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{estadoPacienteController.selected.nombre}" title="#{lenguajes.EditEstadoPacienteTitle_nombre}" required="true" requiredMessage="#{lenguajes.EditEstadoPacienteRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{lenguajes.EditEstadoPacienteLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{estadoPacienteController.selected.descripcion}" title="#{lenguajes.EditEstadoPacienteTitle_descripcion}" required="true" requiredMessage="#{lenguajes.EditEstadoPacienteRequiredMessage_descripcion}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{estadoPacienteController.update}" value="#{lenguajes.EditEstadoPacienteSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{lenguajes.EditEstadoPacienteViewLink}"/>
+                <br />
+                <h:commandLink action="#{estadoPacienteController.prepareList}" value="#{lenguajes.EditEstadoPacienteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.EditEstadoPacienteIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

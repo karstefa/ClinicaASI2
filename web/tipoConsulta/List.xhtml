@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ListTipoConsultaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{lenguajes.ListTipoConsultaEmpty}" rendered="#{tipoConsultaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{tipoConsultaController.items.rowCount > 0}">
+                    <h:outputText value="#{tipoConsultaController.pagination.pageFirstItem + 1}..#{tipoConsultaController.pagination.pageLastItem + 1}/#{tipoConsultaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{tipoConsultaController.previous}" value="#{lenguajes.Previous} #{tipoConsultaController.pagination.pageSize}" rendered="#{tipoConsultaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{tipoConsultaController.next}" value="#{lenguajes.Next} #{tipoConsultaController.pagination.pageSize}" rendered="#{tipoConsultaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{tipoConsultaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListTipoConsultaTitle_idTipoConsulta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipoConsulta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListTipoConsultaTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListTipoConsultaTitle_usuarioActualiza}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuarioActualiza}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListTipoConsultaTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{tipoConsultaController.prepareView}" value="#{lenguajes.ListTipoConsultaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tipoConsultaController.prepareEdit}" value="#{lenguajes.ListTipoConsultaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tipoConsultaController.destroy}" value="#{lenguajes.ListTipoConsultaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{tipoConsultaController.prepareCreate}" value="#{lenguajes.ListTipoConsultaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ListTipoConsultaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

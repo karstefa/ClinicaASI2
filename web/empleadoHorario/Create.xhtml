@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.CreateEmpleadoHorarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.CreateEmpleadoHorarioLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{empleadoHorarioController.selected.usuarioActualiza}" title="#{lenguajes.CreateEmpleadoHorarioTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.CreateEmpleadoHorarioRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.CreateEmpleadoHorarioLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{empleadoHorarioController.selected.activo}" title="#{lenguajes.CreateEmpleadoHorarioTitle_activo}" required="true" requiredMessage="#{lenguajes.CreateEmpleadoHorarioRequiredMessage_activo}"/>
+                    <h:outputLabel value="#{lenguajes.CreateEmpleadoHorarioLabel_costoConsulta}" for="costoConsulta" />
+                    <h:inputText id="costoConsulta" value="#{empleadoHorarioController.selected.costoConsulta}" title="#{lenguajes.CreateEmpleadoHorarioTitle_costoConsulta}" required="true" requiredMessage="#{lenguajes.CreateEmpleadoHorarioRequiredMessage_costoConsulta}"/>
+                    <h:outputLabel value="#{lenguajes.CreateEmpleadoHorarioLabel_horarioAtencion}" for="horarioAtencion" />
+                    <h:selectOneMenu id="horarioAtencion" value="#{empleadoHorarioController.selected.horarioAtencion}" title="#{lenguajes.CreateEmpleadoHorarioTitle_horarioAtencion}" required="true" requiredMessage="#{lenguajes.CreateEmpleadoHorarioRequiredMessage_horarioAtencion}">
+                        <f:selectItems value="#{horarioAtencionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{lenguajes.CreateEmpleadoHorarioLabel_empleadoEspecialidad}" for="empleadoEspecialidad" />
+                    <h:selectOneMenu id="empleadoEspecialidad" value="#{empleadoHorarioController.selected.empleadoEspecialidad}" title="#{lenguajes.CreateEmpleadoHorarioTitle_empleadoEspecialidad}" required="true" requiredMessage="#{lenguajes.CreateEmpleadoHorarioRequiredMessage_empleadoEspecialidad}">
+                        <f:selectItems value="#{empleadoEspecialidadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{empleadoHorarioController.create}" value="#{lenguajes.CreateEmpleadoHorarioSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{empleadoHorarioController.prepareList}" value="#{lenguajes.CreateEmpleadoHorarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.CreateEmpleadoHorarioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

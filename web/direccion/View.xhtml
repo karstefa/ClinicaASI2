@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ViewDireccionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{lenguajes.ViewDireccionLabel_idDireccion}"/>
+                    <h:outputText value="#{direccionController.selected.idDireccion}" title="#{lenguajes.ViewDireccionTitle_idDireccion}"/>
+                    <h:outputText value="#{lenguajes.ViewDireccionLabel_usuarioActualiza}"/>
+                    <h:outputText value="#{direccionController.selected.usuarioActualiza}" title="#{lenguajes.ViewDireccionTitle_usuarioActualiza}"/>
+                    <h:outputText value="#{lenguajes.ViewDireccionLabel_referencia}"/>
+                    <h:outputText value="#{direccionController.selected.referencia}" title="#{lenguajes.ViewDireccionTitle_referencia}"/>
+                    <h:outputText value="#{lenguajes.ViewDireccionLabel_idPersona}"/>
+                    <h:outputText value="#{direccionController.selected.idPersona}" title="#{lenguajes.ViewDireccionTitle_idPersona}"/>
+                    <h:outputText value="#{lenguajes.ViewDireccionLabel_idMunicipio}"/>
+                    <h:outputText value="#{direccionController.selected.idMunicipio}" title="#{lenguajes.ViewDireccionTitle_idMunicipio}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{direccionController.destroyAndView}" value="#{lenguajes.ViewDireccionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{lenguajes.ViewDireccionEditLink}"/>
+                <br />
+                <h:commandLink action="#{direccionController.prepareCreate}" value="#{lenguajes.ViewDireccionCreateLink}" />
+                <br />
+                <h:commandLink action="#{direccionController.prepareList}" value="#{lenguajes.ViewDireccionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ViewDireccionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

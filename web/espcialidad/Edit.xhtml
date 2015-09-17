@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.EditEspcialidadTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.EditEspcialidadLabel_idEspecialidad}" for="idEspecialidad" />
+                    <h:inputText id="idEspecialidad" value="#{espcialidadController.selected.idEspecialidad}" title="#{lenguajes.EditEspcialidadTitle_idEspecialidad}" required="true" requiredMessage="#{lenguajes.EditEspcialidadRequiredMessage_idEspecialidad}"/>
+                    <h:outputLabel value="#{lenguajes.EditEspcialidadLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{espcialidadController.selected.activo}" title="#{lenguajes.EditEspcialidadTitle_activo}" required="true" requiredMessage="#{lenguajes.EditEspcialidadRequiredMessage_activo}"/>
+                    <h:outputLabel value="#{lenguajes.EditEspcialidadLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{espcialidadController.selected.usuarioActualiza}" title="#{lenguajes.EditEspcialidadTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.EditEspcialidadRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.EditEspcialidadLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{espcialidadController.selected.nombre}" title="#{lenguajes.EditEspcialidadTitle_nombre}" required="true" requiredMessage="#{lenguajes.EditEspcialidadRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{lenguajes.EditEspcialidadLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{espcialidadController.selected.descripcion}" title="#{lenguajes.EditEspcialidadTitle_descripcion}" required="true" requiredMessage="#{lenguajes.EditEspcialidadRequiredMessage_descripcion}"/>
+                    <h:outputLabel value="#{lenguajes.EditEspcialidadLabel_idTipoConsulta}" for="idTipoConsulta" />
+                    <h:selectOneMenu id="idTipoConsulta" value="#{espcialidadController.selected.idTipoConsulta}" title="#{lenguajes.EditEspcialidadTitle_idTipoConsulta}" required="true" requiredMessage="#{lenguajes.EditEspcialidadRequiredMessage_idTipoConsulta}">
+                        <f:selectItems value="#{tipoConsultaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{espcialidadController.update}" value="#{lenguajes.EditEspcialidadSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{lenguajes.EditEspcialidadViewLink}"/>
+                <br />
+                <h:commandLink action="#{espcialidadController.prepareList}" value="#{lenguajes.EditEspcialidadShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.EditEspcialidadIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

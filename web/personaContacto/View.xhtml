@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ViewPersonaContactoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{lenguajes.ViewPersonaContactoLabel_valor}"/>
+                    <h:outputText value="#{personaContactoController.selected.valor}" title="#{lenguajes.ViewPersonaContactoTitle_valor}"/>
+                    <h:outputText value="#{lenguajes.ViewPersonaContactoLabel_persona}"/>
+                    <h:outputText value="#{personaContactoController.selected.persona}" title="#{lenguajes.ViewPersonaContactoTitle_persona}"/>
+                    <h:outputText value="#{lenguajes.ViewPersonaContactoLabel_contacto}"/>
+                    <h:outputText value="#{personaContactoController.selected.contacto}" title="#{lenguajes.ViewPersonaContactoTitle_contacto}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{personaContactoController.destroyAndView}" value="#{lenguajes.ViewPersonaContactoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{lenguajes.ViewPersonaContactoEditLink}"/>
+                <br />
+                <h:commandLink action="#{personaContactoController.prepareCreate}" value="#{lenguajes.ViewPersonaContactoCreateLink}" />
+                <br />
+                <h:commandLink action="#{personaContactoController.prepareList}" value="#{lenguajes.ViewPersonaContactoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ViewPersonaContactoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

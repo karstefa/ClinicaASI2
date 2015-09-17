@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ViewPaisTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{lenguajes.ViewPaisLabel_idPais}"/>
+                    <h:outputText value="#{paisController.selected.idPais}" title="#{lenguajes.ViewPaisTitle_idPais}"/>
+                    <h:outputText value="#{lenguajes.ViewPaisLabel_usuarioActualiza}"/>
+                    <h:outputText value="#{paisController.selected.usuarioActualiza}" title="#{lenguajes.ViewPaisTitle_usuarioActualiza}"/>
+                    <h:outputText value="#{lenguajes.ViewPaisLabel_activo}"/>
+                    <h:outputText value="#{paisController.selected.activo}" title="#{lenguajes.ViewPaisTitle_activo}"/>
+                    <h:outputText value="#{lenguajes.ViewPaisLabel_nombre}"/>
+                    <h:outputText value="#{paisController.selected.nombre}" title="#{lenguajes.ViewPaisTitle_nombre}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{paisController.destroyAndView}" value="#{lenguajes.ViewPaisDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{lenguajes.ViewPaisEditLink}"/>
+                <br />
+                <h:commandLink action="#{paisController.prepareCreate}" value="#{lenguajes.ViewPaisCreateLink}" />
+                <br />
+                <h:commandLink action="#{paisController.prepareList}" value="#{lenguajes.ViewPaisShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ViewPaisIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

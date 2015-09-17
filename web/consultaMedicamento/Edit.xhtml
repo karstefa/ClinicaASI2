@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.EditConsultaMedicamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.EditConsultaMedicamentoLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{consultaMedicamentoController.selected.cantidad}" title="#{lenguajes.EditConsultaMedicamentoTitle_cantidad}" required="true" requiredMessage="#{lenguajes.EditConsultaMedicamentoRequiredMessage_cantidad}"/>
+                    <h:outputLabel value="#{lenguajes.EditConsultaMedicamentoLabel_valorFrecuencia}" for="valorFrecuencia" />
+                    <h:inputText id="valorFrecuencia" value="#{consultaMedicamentoController.selected.valorFrecuencia}" title="#{lenguajes.EditConsultaMedicamentoTitle_valorFrecuencia}" required="true" requiredMessage="#{lenguajes.EditConsultaMedicamentoRequiredMessage_valorFrecuencia}"/>
+                    <h:outputLabel value="#{lenguajes.EditConsultaMedicamentoLabel_medicamento}" for="medicamento" />
+                    <h:selectOneMenu id="medicamento" value="#{consultaMedicamentoController.selected.medicamento}" title="#{lenguajes.EditConsultaMedicamentoTitle_medicamento}" required="true" requiredMessage="#{lenguajes.EditConsultaMedicamentoRequiredMessage_medicamento}">
+                        <f:selectItems value="#{medicamentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{lenguajes.EditConsultaMedicamentoLabel_idFrecuencia}" for="idFrecuencia" />
+                    <h:selectOneMenu id="idFrecuencia" value="#{consultaMedicamentoController.selected.idFrecuencia}" title="#{lenguajes.EditConsultaMedicamentoTitle_idFrecuencia}" required="true" requiredMessage="#{lenguajes.EditConsultaMedicamentoRequiredMessage_idFrecuencia}">
+                        <f:selectItems value="#{frecuenciaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{lenguajes.EditConsultaMedicamentoLabel_consulta}" for="consulta" />
+                    <h:selectOneMenu id="consulta" value="#{consultaMedicamentoController.selected.consulta}" title="#{lenguajes.EditConsultaMedicamentoTitle_consulta}" required="true" requiredMessage="#{lenguajes.EditConsultaMedicamentoRequiredMessage_consulta}">
+                        <f:selectItems value="#{consultaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{consultaMedicamentoController.update}" value="#{lenguajes.EditConsultaMedicamentoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{lenguajes.EditConsultaMedicamentoViewLink}"/>
+                <br />
+                <h:commandLink action="#{consultaMedicamentoController.prepareList}" value="#{lenguajes.EditConsultaMedicamentoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.EditConsultaMedicamentoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

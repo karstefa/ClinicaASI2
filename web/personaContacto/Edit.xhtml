@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.EditPersonaContactoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.EditPersonaContactoLabel_valor}" for="valor" />
+                    <h:inputText id="valor" value="#{personaContactoController.selected.valor}" title="#{lenguajes.EditPersonaContactoTitle_valor}" required="true" requiredMessage="#{lenguajes.EditPersonaContactoRequiredMessage_valor}"/>
+                    <h:outputLabel value="#{lenguajes.EditPersonaContactoLabel_persona}" for="persona" />
+                    <h:selectOneMenu id="persona" value="#{personaContactoController.selected.persona}" title="#{lenguajes.EditPersonaContactoTitle_persona}" required="true" requiredMessage="#{lenguajes.EditPersonaContactoRequiredMessage_persona}">
+                        <f:selectItems value="#{personaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{lenguajes.EditPersonaContactoLabel_contacto}" for="contacto" />
+                    <h:selectOneMenu id="contacto" value="#{personaContactoController.selected.contacto}" title="#{lenguajes.EditPersonaContactoTitle_contacto}" required="true" requiredMessage="#{lenguajes.EditPersonaContactoRequiredMessage_contacto}">
+                        <f:selectItems value="#{contactoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{personaContactoController.update}" value="#{lenguajes.EditPersonaContactoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{lenguajes.EditPersonaContactoViewLink}"/>
+                <br />
+                <h:commandLink action="#{personaContactoController.prepareList}" value="#{lenguajes.EditPersonaContactoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.EditPersonaContactoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

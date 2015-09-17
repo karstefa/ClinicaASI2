@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.EditEstadoOrdenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.EditEstadoOrdenLabel_idEstadoOrden}" for="idEstadoOrden" />
+                    <h:inputText id="idEstadoOrden" value="#{estadoOrdenController.selected.idEstadoOrden}" title="#{lenguajes.EditEstadoOrdenTitle_idEstadoOrden}" required="true" requiredMessage="#{lenguajes.EditEstadoOrdenRequiredMessage_idEstadoOrden}"/>
+                    <h:outputLabel value="#{lenguajes.EditEstadoOrdenLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{estadoOrdenController.selected.usuarioActualiza}" title="#{lenguajes.EditEstadoOrdenTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.EditEstadoOrdenRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.EditEstadoOrdenLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{estadoOrdenController.selected.nombre}" title="#{lenguajes.EditEstadoOrdenTitle_nombre}" required="true" requiredMessage="#{lenguajes.EditEstadoOrdenRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{lenguajes.EditEstadoOrdenLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{estadoOrdenController.selected.activo}" title="#{lenguajes.EditEstadoOrdenTitle_activo}" required="true" requiredMessage="#{lenguajes.EditEstadoOrdenRequiredMessage_activo}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{estadoOrdenController.update}" value="#{lenguajes.EditEstadoOrdenSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{lenguajes.EditEstadoOrdenViewLink}"/>
+                <br />
+                <h:commandLink action="#{estadoOrdenController.prepareList}" value="#{lenguajes.EditEstadoOrdenShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.EditEstadoOrdenIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.CreateDetalleFacturaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.CreateDetalleFacturaLabel_idDetalleFactura}" for="idDetalleFactura" />
+                    <h:inputText id="idDetalleFactura" value="#{detalleFacturaController.selected.idDetalleFactura}" title="#{lenguajes.CreateDetalleFacturaTitle_idDetalleFactura}" required="true" requiredMessage="#{lenguajes.CreateDetalleFacturaRequiredMessage_idDetalleFactura}"/>
+                    <h:outputLabel value="#{lenguajes.CreateDetalleFacturaLabel_idFactura}" for="idFactura" />
+                    <h:inputText id="idFactura" value="#{detalleFacturaController.selected.idFactura}" title="#{lenguajes.CreateDetalleFacturaTitle_idFactura}" required="true" requiredMessage="#{lenguajes.CreateDetalleFacturaRequiredMessage_idFactura}"/>
+                    <h:outputLabel value="#{lenguajes.CreateDetalleFacturaLabel_idDetalleMedicamento}" for="idDetalleMedicamento" />
+                    <h:inputText id="idDetalleMedicamento" value="#{detalleFacturaController.selected.idDetalleMedicamento}" title="#{lenguajes.CreateDetalleFacturaTitle_idDetalleMedicamento}" />
+                    <h:outputLabel value="#{lenguajes.CreateDetalleFacturaLabel_idConsulta}" for="idConsulta" />
+                    <h:inputText id="idConsulta" value="#{detalleFacturaController.selected.idConsulta}" title="#{lenguajes.CreateDetalleFacturaTitle_idConsulta}" />
+                    <h:outputLabel value="#{lenguajes.CreateDetalleFacturaLabel_precio}" for="precio" />
+                    <h:inputText id="precio" value="#{detalleFacturaController.selected.precio}" title="#{lenguajes.CreateDetalleFacturaTitle_precio}" required="true" requiredMessage="#{lenguajes.CreateDetalleFacturaRequiredMessage_precio}"/>
+                    <h:outputLabel value="#{lenguajes.CreateDetalleFacturaLabel_porcentajeDescuento}" for="porcentajeDescuento" />
+                    <h:inputText id="porcentajeDescuento" value="#{detalleFacturaController.selected.porcentajeDescuento}" title="#{lenguajes.CreateDetalleFacturaTitle_porcentajeDescuento}" required="true" requiredMessage="#{lenguajes.CreateDetalleFacturaRequiredMessage_porcentajeDescuento}"/>
+                    <h:outputLabel value="#{lenguajes.CreateDetalleFacturaLabel_idConsultaExamen}" for="idConsultaExamen" />
+                    <h:selectOneMenu id="idConsultaExamen" value="#{detalleFacturaController.selected.idConsultaExamen}" title="#{lenguajes.CreateDetalleFacturaTitle_idConsultaExamen}" >
+                        <f:selectItems value="#{consultaExamenController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{detalleFacturaController.create}" value="#{lenguajes.CreateDetalleFacturaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{detalleFacturaController.prepareList}" value="#{lenguajes.CreateDetalleFacturaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.CreateDetalleFacturaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

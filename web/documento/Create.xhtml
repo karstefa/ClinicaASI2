@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.CreateDocumentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.CreateDocumentoLabel_idDocumento}" for="idDocumento" />
+                    <h:inputText id="idDocumento" value="#{documentoController.selected.idDocumento}" title="#{lenguajes.CreateDocumentoTitle_idDocumento}" required="true" requiredMessage="#{lenguajes.CreateDocumentoRequiredMessage_idDocumento}"/>
+                    <h:outputLabel value="#{lenguajes.CreateDocumentoLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{documentoController.selected.activo}" title="#{lenguajes.CreateDocumentoTitle_activo}" required="true" requiredMessage="#{lenguajes.CreateDocumentoRequiredMessage_activo}"/>
+                    <h:outputLabel value="#{lenguajes.CreateDocumentoLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{documentoController.selected.usuarioActualiza}" title="#{lenguajes.CreateDocumentoTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.CreateDocumentoRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.CreateDocumentoLabel_mascara}" for="mascara" />
+                    <h:inputText id="mascara" value="#{documentoController.selected.mascara}" title="#{lenguajes.CreateDocumentoTitle_mascara}" required="true" requiredMessage="#{lenguajes.CreateDocumentoRequiredMessage_mascara}"/>
+                    <h:outputLabel value="#{lenguajes.CreateDocumentoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{documentoController.selected.nombre}" title="#{lenguajes.CreateDocumentoTitle_nombre}" required="true" requiredMessage="#{lenguajes.CreateDocumentoRequiredMessage_nombre}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{documentoController.create}" value="#{lenguajes.CreateDocumentoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{documentoController.prepareList}" value="#{lenguajes.CreateDocumentoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.CreateDocumentoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

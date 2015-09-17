@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.EditTipoEmpleadoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.EditTipoEmpleadoLabel_idTipoEmpleado}" for="idTipoEmpleado" />
+                    <h:inputText id="idTipoEmpleado" value="#{tipoEmpleadoController.selected.idTipoEmpleado}" title="#{lenguajes.EditTipoEmpleadoTitle_idTipoEmpleado}" required="true" requiredMessage="#{lenguajes.EditTipoEmpleadoRequiredMessage_idTipoEmpleado}"/>
+                    <h:outputLabel value="#{lenguajes.EditTipoEmpleadoLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{tipoEmpleadoController.selected.activo}" title="#{lenguajes.EditTipoEmpleadoTitle_activo}" required="true" requiredMessage="#{lenguajes.EditTipoEmpleadoRequiredMessage_activo}"/>
+                    <h:outputLabel value="#{lenguajes.EditTipoEmpleadoLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{tipoEmpleadoController.selected.usuarioActualiza}" title="#{lenguajes.EditTipoEmpleadoTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.EditTipoEmpleadoRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.EditTipoEmpleadoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{tipoEmpleadoController.selected.nombre}" title="#{lenguajes.EditTipoEmpleadoTitle_nombre}" required="true" requiredMessage="#{lenguajes.EditTipoEmpleadoRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{lenguajes.EditTipoEmpleadoLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{tipoEmpleadoController.selected.descripcion}" title="#{lenguajes.EditTipoEmpleadoTitle_descripcion}" required="true" requiredMessage="#{lenguajes.EditTipoEmpleadoRequiredMessage_descripcion}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{tipoEmpleadoController.update}" value="#{lenguajes.EditTipoEmpleadoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{lenguajes.EditTipoEmpleadoViewLink}"/>
+                <br />
+                <h:commandLink action="#{tipoEmpleadoController.prepareList}" value="#{lenguajes.EditTipoEmpleadoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.EditTipoEmpleadoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

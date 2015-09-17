@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.CreateContactoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.CreateContactoLabel_idContacto}" for="idContacto" />
+                    <h:inputText id="idContacto" value="#{contactoController.selected.idContacto}" title="#{lenguajes.CreateContactoTitle_idContacto}" required="true" requiredMessage="#{lenguajes.CreateContactoRequiredMessage_idContacto}"/>
+                    <h:outputLabel value="#{lenguajes.CreateContactoLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{contactoController.selected.activo}" title="#{lenguajes.CreateContactoTitle_activo}" required="true" requiredMessage="#{lenguajes.CreateContactoRequiredMessage_activo}"/>
+                    <h:outputLabel value="#{lenguajes.CreateContactoLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{contactoController.selected.usuarioActualiza}" title="#{lenguajes.CreateContactoTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.CreateContactoRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.CreateContactoLabel_mascara}" for="mascara" />
+                    <h:inputText id="mascara" value="#{contactoController.selected.mascara}" title="#{lenguajes.CreateContactoTitle_mascara}" required="true" requiredMessage="#{lenguajes.CreateContactoRequiredMessage_mascara}"/>
+                    <h:outputLabel value="#{lenguajes.CreateContactoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{contactoController.selected.nombre}" title="#{lenguajes.CreateContactoTitle_nombre}" required="true" requiredMessage="#{lenguajes.CreateContactoRequiredMessage_nombre}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{contactoController.create}" value="#{lenguajes.CreateContactoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{contactoController.prepareList}" value="#{lenguajes.CreateContactoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.CreateContactoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

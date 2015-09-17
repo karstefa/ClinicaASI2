@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.EditHorarioAtencionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.EditHorarioAtencionLabel_idHorarioAtencion}" for="idHorarioAtencion" />
+                    <h:inputText id="idHorarioAtencion" value="#{horarioAtencionController.selected.idHorarioAtencion}" title="#{lenguajes.EditHorarioAtencionTitle_idHorarioAtencion}" required="true" requiredMessage="#{lenguajes.EditHorarioAtencionRequiredMessage_idHorarioAtencion}"/>
+                    <h:outputLabel value="#{lenguajes.EditHorarioAtencionLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{horarioAtencionController.selected.usuarioActualiza}" title="#{lenguajes.EditHorarioAtencionTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.EditHorarioAtencionRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.EditHorarioAtencionLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{horarioAtencionController.selected.activo}" title="#{lenguajes.EditHorarioAtencionTitle_activo}" required="true" requiredMessage="#{lenguajes.EditHorarioAtencionRequiredMessage_activo}"/>
+                    <h:outputLabel value="#{lenguajes.EditHorarioAtencionLabel_dia}" for="dia" />
+                    <h:inputText id="dia" value="#{horarioAtencionController.selected.dia}" title="#{lenguajes.EditHorarioAtencionTitle_dia}" required="true" requiredMessage="#{lenguajes.EditHorarioAtencionRequiredMessage_dia}"/>
+                    <h:outputLabel value="#{lenguajes.EditHorarioAtencionLabel_horaInicio}" for="horaInicio" />
+                    <h:inputText id="horaInicio" value="#{horarioAtencionController.selected.horaInicio}" title="#{lenguajes.EditHorarioAtencionTitle_horaInicio}" required="true" requiredMessage="#{lenguajes.EditHorarioAtencionRequiredMessage_horaInicio}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{lenguajes.EditHorarioAtencionLabel_horaFin}" for="horaFin" />
+                    <h:inputText id="horaFin" value="#{horarioAtencionController.selected.horaFin}" title="#{lenguajes.EditHorarioAtencionTitle_horaFin}" required="true" requiredMessage="#{lenguajes.EditHorarioAtencionRequiredMessage_horaFin}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{lenguajes.EditHorarioAtencionLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{horarioAtencionController.selected.descripcion}" title="#{lenguajes.EditHorarioAtencionTitle_descripcion}" required="true" requiredMessage="#{lenguajes.EditHorarioAtencionRequiredMessage_descripcion}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{horarioAtencionController.update}" value="#{lenguajes.EditHorarioAtencionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{lenguajes.EditHorarioAtencionViewLink}"/>
+                <br />
+                <h:commandLink action="#{horarioAtencionController.prepareList}" value="#{lenguajes.EditHorarioAtencionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.EditHorarioAtencionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

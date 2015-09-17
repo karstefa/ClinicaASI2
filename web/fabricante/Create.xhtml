@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.CreateFabricanteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.CreateFabricanteLabel_idFabricante}" for="idFabricante" />
+                    <h:inputText id="idFabricante" value="#{fabricanteController.selected.idFabricante}" title="#{lenguajes.CreateFabricanteTitle_idFabricante}" required="true" requiredMessage="#{lenguajes.CreateFabricanteRequiredMessage_idFabricante}"/>
+                    <h:outputLabel value="#{lenguajes.CreateFabricanteLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{fabricanteController.selected.usuarioActualiza}" title="#{lenguajes.CreateFabricanteTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.CreateFabricanteRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.CreateFabricanteLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{fabricanteController.selected.activo}" title="#{lenguajes.CreateFabricanteTitle_activo}" required="true" requiredMessage="#{lenguajes.CreateFabricanteRequiredMessage_activo}"/>
+                    <h:outputLabel value="#{lenguajes.CreateFabricanteLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{fabricanteController.selected.nombre}" title="#{lenguajes.CreateFabricanteTitle_nombre}" required="true" requiredMessage="#{lenguajes.CreateFabricanteRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{lenguajes.CreateFabricanteLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{fabricanteController.selected.direccion}" title="#{lenguajes.CreateFabricanteTitle_direccion}" required="true" requiredMessage="#{lenguajes.CreateFabricanteRequiredMessage_direccion}"/>
+                    <h:outputLabel value="#{lenguajes.CreateFabricanteLabel_contacto}" for="contacto" />
+                    <h:inputText id="contacto" value="#{fabricanteController.selected.contacto}" title="#{lenguajes.CreateFabricanteTitle_contacto}" required="true" requiredMessage="#{lenguajes.CreateFabricanteRequiredMessage_contacto}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{fabricanteController.create}" value="#{lenguajes.CreateFabricanteSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{fabricanteController.prepareList}" value="#{lenguajes.CreateFabricanteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.CreateFabricanteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

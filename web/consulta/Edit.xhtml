@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.EditConsultaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.EditConsultaLabel_idConsulta}" for="idConsulta" />
+                    <h:inputText id="idConsulta" value="#{consultaController.selected.idConsulta}" title="#{lenguajes.EditConsultaTitle_idConsulta}" required="true" requiredMessage="#{lenguajes.EditConsultaRequiredMessage_idConsulta}"/>
+                    <h:outputLabel value="#{lenguajes.EditConsultaLabel_fechaHora}" for="fechaHora" />
+                    <h:inputText id="fechaHora" value="#{consultaController.selected.fechaHora}" title="#{lenguajes.EditConsultaTitle_fechaHora}" required="true" requiredMessage="#{lenguajes.EditConsultaRequiredMessage_fechaHora}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{lenguajes.EditConsultaLabel_motivo}" for="motivo" />
+                    <h:inputText id="motivo" value="#{consultaController.selected.motivo}" title="#{lenguajes.EditConsultaTitle_motivo}" required="true" requiredMessage="#{lenguajes.EditConsultaRequiredMessage_motivo}"/>
+                    <h:outputLabel value="#{lenguajes.EditConsultaLabel_resultado}" for="resultado" />
+                    <h:inputTextarea rows="4" cols="30" id="resultado" value="#{consultaController.selected.resultado}" title="#{lenguajes.EditConsultaTitle_resultado}" required="true" requiredMessage="#{lenguajes.EditConsultaRequiredMessage_resultado}"/>
+                    <h:outputLabel value="#{lenguajes.EditConsultaLabel_idPaciente}" for="idPaciente" />
+                    <h:selectOneMenu id="idPaciente" value="#{consultaController.selected.idPaciente}" title="#{lenguajes.EditConsultaTitle_idPaciente}" required="true" requiredMessage="#{lenguajes.EditConsultaRequiredMessage_idPaciente}">
+                        <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{lenguajes.EditConsultaLabel_idEstadoConsulta}" for="idEstadoConsulta" />
+                    <h:selectOneMenu id="idEstadoConsulta" value="#{consultaController.selected.idEstadoConsulta}" title="#{lenguajes.EditConsultaTitle_idEstadoConsulta}" required="true" requiredMessage="#{lenguajes.EditConsultaRequiredMessage_idEstadoConsulta}">
+                        <f:selectItems value="#{estadoConsultaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{lenguajes.EditConsultaLabel_empleadoHorario}" for="empleadoHorario" />
+                    <h:selectOneMenu id="empleadoHorario" value="#{consultaController.selected.empleadoHorario}" title="#{lenguajes.EditConsultaTitle_empleadoHorario}" required="true" requiredMessage="#{lenguajes.EditConsultaRequiredMessage_empleadoHorario}">
+                        <f:selectItems value="#{empleadoHorarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{consultaController.update}" value="#{lenguajes.EditConsultaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{lenguajes.EditConsultaViewLink}"/>
+                <br />
+                <h:commandLink action="#{consultaController.prepareList}" value="#{lenguajes.EditConsultaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.EditConsultaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

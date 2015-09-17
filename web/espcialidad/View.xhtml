@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ViewEspcialidadTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{lenguajes.ViewEspcialidadLabel_idEspecialidad}"/>
+                    <h:outputText value="#{espcialidadController.selected.idEspecialidad}" title="#{lenguajes.ViewEspcialidadTitle_idEspecialidad}"/>
+                    <h:outputText value="#{lenguajes.ViewEspcialidadLabel_activo}"/>
+                    <h:outputText value="#{espcialidadController.selected.activo}" title="#{lenguajes.ViewEspcialidadTitle_activo}"/>
+                    <h:outputText value="#{lenguajes.ViewEspcialidadLabel_usuarioActualiza}"/>
+                    <h:outputText value="#{espcialidadController.selected.usuarioActualiza}" title="#{lenguajes.ViewEspcialidadTitle_usuarioActualiza}"/>
+                    <h:outputText value="#{lenguajes.ViewEspcialidadLabel_nombre}"/>
+                    <h:outputText value="#{espcialidadController.selected.nombre}" title="#{lenguajes.ViewEspcialidadTitle_nombre}"/>
+                    <h:outputText value="#{lenguajes.ViewEspcialidadLabel_descripcion}"/>
+                    <h:outputText value="#{espcialidadController.selected.descripcion}" title="#{lenguajes.ViewEspcialidadTitle_descripcion}"/>
+                    <h:outputText value="#{lenguajes.ViewEspcialidadLabel_idTipoConsulta}"/>
+                    <h:outputText value="#{espcialidadController.selected.idTipoConsulta}" title="#{lenguajes.ViewEspcialidadTitle_idTipoConsulta}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{espcialidadController.destroyAndView}" value="#{lenguajes.ViewEspcialidadDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{lenguajes.ViewEspcialidadEditLink}"/>
+                <br />
+                <h:commandLink action="#{espcialidadController.prepareCreate}" value="#{lenguajes.ViewEspcialidadCreateLink}" />
+                <br />
+                <h:commandLink action="#{espcialidadController.prepareList}" value="#{lenguajes.ViewEspcialidadShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ViewEspcialidadIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ViewMedicamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{lenguajes.ViewMedicamentoLabel_idMedicamento}"/>
+                    <h:outputText value="#{medicamentoController.selected.idMedicamento}" title="#{lenguajes.ViewMedicamentoTitle_idMedicamento}"/>
+                    <h:outputText value="#{lenguajes.ViewMedicamentoLabel_usuarioActualiza}"/>
+                    <h:outputText value="#{medicamentoController.selected.usuarioActualiza}" title="#{lenguajes.ViewMedicamentoTitle_usuarioActualiza}"/>
+                    <h:outputText value="#{lenguajes.ViewMedicamentoLabel_cantidadMinima}"/>
+                    <h:outputText value="#{medicamentoController.selected.cantidadMinima}" title="#{lenguajes.ViewMedicamentoTitle_cantidadMinima}"/>
+                    <h:outputText value="#{lenguajes.ViewMedicamentoLabel_cantidadMaxima}"/>
+                    <h:outputText value="#{medicamentoController.selected.cantidadMaxima}" title="#{lenguajes.ViewMedicamentoTitle_cantidadMaxima}"/>
+                    <h:outputText value="#{lenguajes.ViewMedicamentoLabel_nombre}"/>
+                    <h:outputText value="#{medicamentoController.selected.nombre}" title="#{lenguajes.ViewMedicamentoTitle_nombre}"/>
+                    <h:outputText value="#{lenguajes.ViewMedicamentoLabel_idProveedor}"/>
+                    <h:outputText value="#{medicamentoController.selected.idProveedor}" title="#{lenguajes.ViewMedicamentoTitle_idProveedor}"/>
+                    <h:outputText value="#{lenguajes.ViewMedicamentoLabel_idFabricante}"/>
+                    <h:outputText value="#{medicamentoController.selected.idFabricante}" title="#{lenguajes.ViewMedicamentoTitle_idFabricante}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{medicamentoController.destroyAndView}" value="#{lenguajes.ViewMedicamentoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{lenguajes.ViewMedicamentoEditLink}"/>
+                <br />
+                <h:commandLink action="#{medicamentoController.prepareCreate}" value="#{lenguajes.ViewMedicamentoCreateLink}" />
+                <br />
+                <h:commandLink action="#{medicamentoController.prepareList}" value="#{lenguajes.ViewMedicamentoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ViewMedicamentoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

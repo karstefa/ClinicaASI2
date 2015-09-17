@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ViewContactoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{lenguajes.ViewContactoLabel_idContacto}"/>
+                    <h:outputText value="#{contactoController.selected.idContacto}" title="#{lenguajes.ViewContactoTitle_idContacto}"/>
+                    <h:outputText value="#{lenguajes.ViewContactoLabel_activo}"/>
+                    <h:outputText value="#{contactoController.selected.activo}" title="#{lenguajes.ViewContactoTitle_activo}"/>
+                    <h:outputText value="#{lenguajes.ViewContactoLabel_usuarioActualiza}"/>
+                    <h:outputText value="#{contactoController.selected.usuarioActualiza}" title="#{lenguajes.ViewContactoTitle_usuarioActualiza}"/>
+                    <h:outputText value="#{lenguajes.ViewContactoLabel_mascara}"/>
+                    <h:outputText value="#{contactoController.selected.mascara}" title="#{lenguajes.ViewContactoTitle_mascara}"/>
+                    <h:outputText value="#{lenguajes.ViewContactoLabel_nombre}"/>
+                    <h:outputText value="#{contactoController.selected.nombre}" title="#{lenguajes.ViewContactoTitle_nombre}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{contactoController.destroyAndView}" value="#{lenguajes.ViewContactoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{lenguajes.ViewContactoEditLink}"/>
+                <br />
+                <h:commandLink action="#{contactoController.prepareCreate}" value="#{lenguajes.ViewContactoCreateLink}" />
+                <br />
+                <h:commandLink action="#{contactoController.prepareList}" value="#{lenguajes.ViewContactoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ViewContactoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

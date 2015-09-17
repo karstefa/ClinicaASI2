@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ListMedicamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{lenguajes.ListMedicamentoEmpty}" rendered="#{medicamentoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{medicamentoController.items.rowCount > 0}">
+                    <h:outputText value="#{medicamentoController.pagination.pageFirstItem + 1}..#{medicamentoController.pagination.pageLastItem + 1}/#{medicamentoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{medicamentoController.previous}" value="#{lenguajes.Previous} #{medicamentoController.pagination.pageSize}" rendered="#{medicamentoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{medicamentoController.next}" value="#{lenguajes.Next} #{medicamentoController.pagination.pageSize}" rendered="#{medicamentoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{medicamentoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListMedicamentoTitle_idMedicamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMedicamento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListMedicamentoTitle_usuarioActualiza}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuarioActualiza}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListMedicamentoTitle_cantidadMinima}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantidadMinima}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListMedicamentoTitle_cantidadMaxima}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantidadMaxima}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListMedicamentoTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListMedicamentoTitle_idProveedor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idProveedor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListMedicamentoTitle_idFabricante}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idFabricante}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{medicamentoController.prepareView}" value="#{lenguajes.ListMedicamentoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{medicamentoController.prepareEdit}" value="#{lenguajes.ListMedicamentoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{medicamentoController.destroy}" value="#{lenguajes.ListMedicamentoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{medicamentoController.prepareCreate}" value="#{lenguajes.ListMedicamentoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ListMedicamentoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

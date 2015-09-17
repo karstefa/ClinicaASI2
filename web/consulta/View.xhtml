@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ViewConsultaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{lenguajes.ViewConsultaLabel_idConsulta}"/>
+                    <h:outputText value="#{consultaController.selected.idConsulta}" title="#{lenguajes.ViewConsultaTitle_idConsulta}"/>
+                    <h:outputText value="#{lenguajes.ViewConsultaLabel_fechaHora}"/>
+                    <h:outputText value="#{consultaController.selected.fechaHora}" title="#{lenguajes.ViewConsultaTitle_fechaHora}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{lenguajes.ViewConsultaLabel_motivo}"/>
+                    <h:outputText value="#{consultaController.selected.motivo}" title="#{lenguajes.ViewConsultaTitle_motivo}"/>
+                    <h:outputText value="#{lenguajes.ViewConsultaLabel_resultado}"/>
+                    <h:outputText value="#{consultaController.selected.resultado}" title="#{lenguajes.ViewConsultaTitle_resultado}"/>
+                    <h:outputText value="#{lenguajes.ViewConsultaLabel_idPaciente}"/>
+                    <h:outputText value="#{consultaController.selected.idPaciente}" title="#{lenguajes.ViewConsultaTitle_idPaciente}"/>
+                    <h:outputText value="#{lenguajes.ViewConsultaLabel_idEstadoConsulta}"/>
+                    <h:outputText value="#{consultaController.selected.idEstadoConsulta}" title="#{lenguajes.ViewConsultaTitle_idEstadoConsulta}"/>
+                    <h:outputText value="#{lenguajes.ViewConsultaLabel_empleadoHorario}"/>
+                    <h:outputText value="#{consultaController.selected.empleadoHorario}" title="#{lenguajes.ViewConsultaTitle_empleadoHorario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{consultaController.destroyAndView}" value="#{lenguajes.ViewConsultaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{lenguajes.ViewConsultaEditLink}"/>
+                <br />
+                <h:commandLink action="#{consultaController.prepareCreate}" value="#{lenguajes.ViewConsultaCreateLink}" />
+                <br />
+                <h:commandLink action="#{consultaController.prepareList}" value="#{lenguajes.ViewConsultaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ViewConsultaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

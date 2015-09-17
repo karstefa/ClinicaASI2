@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ViewDetalleMedicamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{lenguajes.ViewDetalleMedicamentoLabel_idDetalleMedicamento}"/>
+                    <h:outputText value="#{detalleMedicamentoController.selected.idDetalleMedicamento}" title="#{lenguajes.ViewDetalleMedicamentoTitle_idDetalleMedicamento}"/>
+                    <h:outputText value="#{lenguajes.ViewDetalleMedicamentoLabel_fechaRecepcion}"/>
+                    <h:outputText value="#{detalleMedicamentoController.selected.fechaRecepcion}" title="#{lenguajes.ViewDetalleMedicamentoTitle_fechaRecepcion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{lenguajes.ViewDetalleMedicamentoLabel_usuarioActualiza}"/>
+                    <h:outputText value="#{detalleMedicamentoController.selected.usuarioActualiza}" title="#{lenguajes.ViewDetalleMedicamentoTitle_usuarioActualiza}"/>
+                    <h:outputText value="#{lenguajes.ViewDetalleMedicamentoLabel_fechaFabricacion}"/>
+                    <h:outputText value="#{detalleMedicamentoController.selected.fechaFabricacion}" title="#{lenguajes.ViewDetalleMedicamentoTitle_fechaFabricacion}"/>
+                    <h:outputText value="#{lenguajes.ViewDetalleMedicamentoLabel_fechaVencimiento}"/>
+                    <h:outputText value="#{detalleMedicamentoController.selected.fechaVencimiento}" title="#{lenguajes.ViewDetalleMedicamentoTitle_fechaVencimiento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{lenguajes.ViewDetalleMedicamentoLabel_codigo}"/>
+                    <h:outputText value="#{detalleMedicamentoController.selected.codigo}" title="#{lenguajes.ViewDetalleMedicamentoTitle_codigo}"/>
+                    <h:outputText value="#{lenguajes.ViewDetalleMedicamentoLabel_idLoteMedicamento}"/>
+                    <h:outputText value="#{detalleMedicamentoController.selected.idLoteMedicamento}" title="#{lenguajes.ViewDetalleMedicamentoTitle_idLoteMedicamento}"/>
+                    <h:outputText value="#{lenguajes.ViewDetalleMedicamentoLabel_idEstadoDetalleMedicamento}"/>
+                    <h:outputText value="#{detalleMedicamentoController.selected.idEstadoDetalleMedicamento}" title="#{lenguajes.ViewDetalleMedicamentoTitle_idEstadoDetalleMedicamento}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{detalleMedicamentoController.destroyAndView}" value="#{lenguajes.ViewDetalleMedicamentoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{lenguajes.ViewDetalleMedicamentoEditLink}"/>
+                <br />
+                <h:commandLink action="#{detalleMedicamentoController.prepareCreate}" value="#{lenguajes.ViewDetalleMedicamentoCreateLink}" />
+                <br />
+                <h:commandLink action="#{detalleMedicamentoController.prepareList}" value="#{lenguajes.ViewDetalleMedicamentoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ViewDetalleMedicamentoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ListEspcialidadTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{lenguajes.ListEspcialidadEmpty}" rendered="#{espcialidadController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{espcialidadController.items.rowCount > 0}">
+                    <h:outputText value="#{espcialidadController.pagination.pageFirstItem + 1}..#{espcialidadController.pagination.pageLastItem + 1}/#{espcialidadController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{espcialidadController.previous}" value="#{lenguajes.Previous} #{espcialidadController.pagination.pageSize}" rendered="#{espcialidadController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{espcialidadController.next}" value="#{lenguajes.Next} #{espcialidadController.pagination.pageSize}" rendered="#{espcialidadController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{espcialidadController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListEspcialidadTitle_idEspecialidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEspecialidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListEspcialidadTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListEspcialidadTitle_usuarioActualiza}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuarioActualiza}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListEspcialidadTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListEspcialidadTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListEspcialidadTitle_idTipoConsulta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipoConsulta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{espcialidadController.prepareView}" value="#{lenguajes.ListEspcialidadViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{espcialidadController.prepareEdit}" value="#{lenguajes.ListEspcialidadEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{espcialidadController.destroy}" value="#{lenguajes.ListEspcialidadDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{espcialidadController.prepareCreate}" value="#{lenguajes.ListEspcialidadCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ListEspcialidadIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

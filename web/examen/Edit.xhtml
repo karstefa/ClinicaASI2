@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.EditExamenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.EditExamenLabel_idExamen}" for="idExamen" />
+                    <h:inputText id="idExamen" value="#{examenController.selected.idExamen}" title="#{lenguajes.EditExamenTitle_idExamen}" required="true" requiredMessage="#{lenguajes.EditExamenRequiredMessage_idExamen}"/>
+                    <h:outputLabel value="#{lenguajes.EditExamenLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{examenController.selected.usuarioActualiza}" title="#{lenguajes.EditExamenTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.EditExamenRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.EditExamenLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{examenController.selected.nombre}" title="#{lenguajes.EditExamenTitle_nombre}" required="true" requiredMessage="#{lenguajes.EditExamenRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{lenguajes.EditExamenLabel_costoExamen}" for="costoExamen" />
+                    <h:inputText id="costoExamen" value="#{examenController.selected.costoExamen}" title="#{lenguajes.EditExamenTitle_costoExamen}" required="true" requiredMessage="#{lenguajes.EditExamenRequiredMessage_costoExamen}"/>
+                    <h:outputLabel value="#{lenguajes.EditExamenLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{examenController.selected.activo}" title="#{lenguajes.EditExamenTitle_activo}" required="true" requiredMessage="#{lenguajes.EditExamenRequiredMessage_activo}"/>
+                    <h:outputLabel value="#{lenguajes.EditExamenLabel_idTipoExamen}" for="idTipoExamen" />
+                    <h:selectOneMenu id="idTipoExamen" value="#{examenController.selected.idTipoExamen}" title="#{lenguajes.EditExamenTitle_idTipoExamen}" required="true" requiredMessage="#{lenguajes.EditExamenRequiredMessage_idTipoExamen}">
+                        <f:selectItems value="#{tipoExamenController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{examenController.update}" value="#{lenguajes.EditExamenSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{lenguajes.EditExamenViewLink}"/>
+                <br />
+                <h:commandLink action="#{examenController.prepareList}" value="#{lenguajes.EditExamenShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.EditExamenIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

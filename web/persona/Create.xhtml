@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.CreatePersonaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.CreatePersonaLabel_idPersona}" for="idPersona" />
+                    <h:inputText id="idPersona" value="#{personaController.selected.idPersona}" title="#{lenguajes.CreatePersonaTitle_idPersona}" required="true" requiredMessage="#{lenguajes.CreatePersonaRequiredMessage_idPersona}"/>
+                    <h:outputLabel value="#{lenguajes.CreatePersonaLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{personaController.selected.usuarioActualiza}" title="#{lenguajes.CreatePersonaTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.CreatePersonaRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.CreatePersonaLabel_primerNombre}" for="primerNombre" />
+                    <h:inputText id="primerNombre" value="#{personaController.selected.primerNombre}" title="#{lenguajes.CreatePersonaTitle_primerNombre}" required="true" requiredMessage="#{lenguajes.CreatePersonaRequiredMessage_primerNombre}"/>
+                    <h:outputLabel value="#{lenguajes.CreatePersonaLabel_tercerNombre}" for="tercerNombre" />
+                    <h:inputText id="tercerNombre" value="#{personaController.selected.tercerNombre}" title="#{lenguajes.CreatePersonaTitle_tercerNombre}" required="true" requiredMessage="#{lenguajes.CreatePersonaRequiredMessage_tercerNombre}"/>
+                    <h:outputLabel value="#{lenguajes.CreatePersonaLabel_primerApellido}" for="primerApellido" />
+                    <h:inputText id="primerApellido" value="#{personaController.selected.primerApellido}" title="#{lenguajes.CreatePersonaTitle_primerApellido}" required="true" requiredMessage="#{lenguajes.CreatePersonaRequiredMessage_primerApellido}"/>
+                    <h:outputLabel value="#{lenguajes.CreatePersonaLabel_segundoApellido}" for="segundoApellido" />
+                    <h:inputText id="segundoApellido" value="#{personaController.selected.segundoApellido}" title="#{lenguajes.CreatePersonaTitle_segundoApellido}" required="true" requiredMessage="#{lenguajes.CreatePersonaRequiredMessage_segundoApellido}"/>
+                    <h:outputLabel value="#{lenguajes.CreatePersonaLabel_fechaNacimiento}" for="fechaNacimiento" />
+                    <h:inputText id="fechaNacimiento" value="#{personaController.selected.fechaNacimiento}" title="#{lenguajes.CreatePersonaTitle_fechaNacimiento}" required="true" requiredMessage="#{lenguajes.CreatePersonaRequiredMessage_fechaNacimiento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{lenguajes.CreatePersonaLabel_segundoNombre}" for="segundoNombre" />
+                    <h:inputText id="segundoNombre" value="#{personaController.selected.segundoNombre}" title="#{lenguajes.CreatePersonaTitle_segundoNombre}" required="true" requiredMessage="#{lenguajes.CreatePersonaRequiredMessage_segundoNombre}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{personaController.create}" value="#{lenguajes.CreatePersonaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{personaController.prepareList}" value="#{lenguajes.CreatePersonaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.CreatePersonaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.CreateMunicipioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.CreateMunicipioLabel_idMunicipio}" for="idMunicipio" />
+                    <h:inputText id="idMunicipio" value="#{municipioController.selected.idMunicipio}" title="#{lenguajes.CreateMunicipioTitle_idMunicipio}" required="true" requiredMessage="#{lenguajes.CreateMunicipioRequiredMessage_idMunicipio}"/>
+                    <h:outputLabel value="#{lenguajes.CreateMunicipioLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{municipioController.selected.activo}" title="#{lenguajes.CreateMunicipioTitle_activo}" required="true" requiredMessage="#{lenguajes.CreateMunicipioRequiredMessage_activo}"/>
+                    <h:outputLabel value="#{lenguajes.CreateMunicipioLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{municipioController.selected.usuarioActualiza}" title="#{lenguajes.CreateMunicipioTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.CreateMunicipioRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.CreateMunicipioLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{municipioController.selected.nombre}" title="#{lenguajes.CreateMunicipioTitle_nombre}" required="true" requiredMessage="#{lenguajes.CreateMunicipioRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{lenguajes.CreateMunicipioLabel_idDepartamento}" for="idDepartamento" />
+                    <h:selectOneMenu id="idDepartamento" value="#{municipioController.selected.idDepartamento}" title="#{lenguajes.CreateMunicipioTitle_idDepartamento}" required="true" requiredMessage="#{lenguajes.CreateMunicipioRequiredMessage_idDepartamento}">
+                        <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{municipioController.create}" value="#{lenguajes.CreateMunicipioSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{municipioController.prepareList}" value="#{lenguajes.CreateMunicipioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.CreateMunicipioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

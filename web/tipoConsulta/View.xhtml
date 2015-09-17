@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ViewTipoConsultaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{lenguajes.ViewTipoConsultaLabel_idTipoConsulta}"/>
+                    <h:outputText value="#{tipoConsultaController.selected.idTipoConsulta}" title="#{lenguajes.ViewTipoConsultaTitle_idTipoConsulta}"/>
+                    <h:outputText value="#{lenguajes.ViewTipoConsultaLabel_activo}"/>
+                    <h:outputText value="#{tipoConsultaController.selected.activo}" title="#{lenguajes.ViewTipoConsultaTitle_activo}"/>
+                    <h:outputText value="#{lenguajes.ViewTipoConsultaLabel_usuarioActualiza}"/>
+                    <h:outputText value="#{tipoConsultaController.selected.usuarioActualiza}" title="#{lenguajes.ViewTipoConsultaTitle_usuarioActualiza}"/>
+                    <h:outputText value="#{lenguajes.ViewTipoConsultaLabel_nombre}"/>
+                    <h:outputText value="#{tipoConsultaController.selected.nombre}" title="#{lenguajes.ViewTipoConsultaTitle_nombre}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoConsultaController.destroyAndView}" value="#{lenguajes.ViewTipoConsultaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{lenguajes.ViewTipoConsultaEditLink}"/>
+                <br />
+                <h:commandLink action="#{tipoConsultaController.prepareCreate}" value="#{lenguajes.ViewTipoConsultaCreateLink}" />
+                <br />
+                <h:commandLink action="#{tipoConsultaController.prepareList}" value="#{lenguajes.ViewTipoConsultaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ViewTipoConsultaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

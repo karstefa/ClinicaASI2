@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ViewOrdenLoteMedicamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{lenguajes.ViewOrdenLoteMedicamentoLabel_idOrdenLoteMedicamento}"/>
+                    <h:outputText value="#{ordenLoteMedicamentoController.selected.idOrdenLoteMedicamento}" title="#{lenguajes.ViewOrdenLoteMedicamentoTitle_idOrdenLoteMedicamento}"/>
+                    <h:outputText value="#{lenguajes.ViewOrdenLoteMedicamentoLabel_cantidadSolicitar}"/>
+                    <h:outputText value="#{ordenLoteMedicamentoController.selected.cantidadSolicitar}" title="#{lenguajes.ViewOrdenLoteMedicamentoTitle_cantidadSolicitar}"/>
+                    <h:outputText value="#{lenguajes.ViewOrdenLoteMedicamentoLabel_idMedicamento}"/>
+                    <h:outputText value="#{ordenLoteMedicamentoController.selected.idMedicamento}" title="#{lenguajes.ViewOrdenLoteMedicamentoTitle_idMedicamento}"/>
+                    <h:outputText value="#{lenguajes.ViewOrdenLoteMedicamentoLabel_idEstadoOrden}"/>
+                    <h:outputText value="#{ordenLoteMedicamentoController.selected.idEstadoOrden}" title="#{lenguajes.ViewOrdenLoteMedicamentoTitle_idEstadoOrden}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{ordenLoteMedicamentoController.destroyAndView}" value="#{lenguajes.ViewOrdenLoteMedicamentoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{lenguajes.ViewOrdenLoteMedicamentoEditLink}"/>
+                <br />
+                <h:commandLink action="#{ordenLoteMedicamentoController.prepareCreate}" value="#{lenguajes.ViewOrdenLoteMedicamentoCreateLink}" />
+                <br />
+                <h:commandLink action="#{ordenLoteMedicamentoController.prepareList}" value="#{lenguajes.ViewOrdenLoteMedicamentoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ViewOrdenLoteMedicamentoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

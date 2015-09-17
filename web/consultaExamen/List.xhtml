@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ListConsultaExamenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{lenguajes.ListConsultaExamenEmpty}" rendered="#{consultaExamenController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{consultaExamenController.items.rowCount > 0}">
+                    <h:outputText value="#{consultaExamenController.pagination.pageFirstItem + 1}..#{consultaExamenController.pagination.pageLastItem + 1}/#{consultaExamenController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{consultaExamenController.previous}" value="#{lenguajes.Previous} #{consultaExamenController.pagination.pageSize}" rendered="#{consultaExamenController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{consultaExamenController.next}" value="#{lenguajes.Next} #{consultaExamenController.pagination.pageSize}" rendered="#{consultaExamenController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{consultaExamenController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListConsultaExamenTitle_idConsultaExamen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idConsultaExamen}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListConsultaExamenTitle_fechaExamen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaExamen}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListConsultaExamenTitle_descuento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descuento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListConsultaExamenTitle_precioExamen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.precioExamen}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListConsultaExamenTitle_resultadoExamen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.resultadoExamen}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListConsultaExamenTitle_idExamen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idExamen}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListConsultaExamenTitle_idEstadoExamen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstadoExamen}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListConsultaExamenTitle_idConsulta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idConsulta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{consultaExamenController.prepareView}" value="#{lenguajes.ListConsultaExamenViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{consultaExamenController.prepareEdit}" value="#{lenguajes.ListConsultaExamenEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{consultaExamenController.destroy}" value="#{lenguajes.ListConsultaExamenDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{consultaExamenController.prepareCreate}" value="#{lenguajes.ListConsultaExamenCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ListConsultaExamenIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.EditEmpleadoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.EditEmpleadoLabel_idEmpleado}" for="idEmpleado" />
+                    <h:inputText id="idEmpleado" value="#{empleadoController.selected.idEmpleado}" title="#{lenguajes.EditEmpleadoTitle_idEmpleado}" required="true" requiredMessage="#{lenguajes.EditEmpleadoRequiredMessage_idEmpleado}"/>
+                    <h:outputLabel value="#{lenguajes.EditEmpleadoLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{empleadoController.selected.usuarioActualiza}" title="#{lenguajes.EditEmpleadoTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.EditEmpleadoRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.EditEmpleadoLabel_carnet}" for="carnet" />
+                    <h:inputText id="carnet" value="#{empleadoController.selected.carnet}" title="#{lenguajes.EditEmpleadoTitle_carnet}" required="true" requiredMessage="#{lenguajes.EditEmpleadoRequiredMessage_carnet}"/>
+                    <h:outputLabel value="#{lenguajes.EditEmpleadoLabel_salario}" for="salario" />
+                    <h:inputText id="salario" value="#{empleadoController.selected.salario}" title="#{lenguajes.EditEmpleadoTitle_salario}" required="true" requiredMessage="#{lenguajes.EditEmpleadoRequiredMessage_salario}"/>
+                    <h:outputLabel value="#{lenguajes.EditEmpleadoLabel_idTipoEmpleado}" for="idTipoEmpleado" />
+                    <h:selectOneMenu id="idTipoEmpleado" value="#{empleadoController.selected.idTipoEmpleado}" title="#{lenguajes.EditEmpleadoTitle_idTipoEmpleado}" required="true" requiredMessage="#{lenguajes.EditEmpleadoRequiredMessage_idTipoEmpleado}">
+                        <f:selectItems value="#{tipoEmpleadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{lenguajes.EditEmpleadoLabel_idPersona}" for="idPersona" />
+                    <h:selectOneMenu id="idPersona" value="#{empleadoController.selected.idPersona}" title="#{lenguajes.EditEmpleadoTitle_idPersona}" required="true" requiredMessage="#{lenguajes.EditEmpleadoRequiredMessage_idPersona}">
+                        <f:selectItems value="#{personaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{lenguajes.EditEmpleadoLabel_idEstadoEmpleado}" for="idEstadoEmpleado" />
+                    <h:selectOneMenu id="idEstadoEmpleado" value="#{empleadoController.selected.idEstadoEmpleado}" title="#{lenguajes.EditEmpleadoTitle_idEstadoEmpleado}" required="true" requiredMessage="#{lenguajes.EditEmpleadoRequiredMessage_idEstadoEmpleado}">
+                        <f:selectItems value="#{estadoEmpleadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{lenguajes.EditEmpleadoLabel_idCargo}" for="idCargo" />
+                    <h:selectOneMenu id="idCargo" value="#{empleadoController.selected.idCargo}" title="#{lenguajes.EditEmpleadoTitle_idCargo}" required="true" requiredMessage="#{lenguajes.EditEmpleadoRequiredMessage_idCargo}">
+                        <f:selectItems value="#{cargoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{empleadoController.update}" value="#{lenguajes.EditEmpleadoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{lenguajes.EditEmpleadoViewLink}"/>
+                <br />
+                <h:commandLink action="#{empleadoController.prepareList}" value="#{lenguajes.EditEmpleadoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.EditEmpleadoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

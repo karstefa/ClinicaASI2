@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ListTipoPagoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{lenguajes.ListTipoPagoEmpty}" rendered="#{tipoPagoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{tipoPagoController.items.rowCount > 0}">
+                    <h:outputText value="#{tipoPagoController.pagination.pageFirstItem + 1}..#{tipoPagoController.pagination.pageLastItem + 1}/#{tipoPagoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{tipoPagoController.previous}" value="#{lenguajes.Previous} #{tipoPagoController.pagination.pageSize}" rendered="#{tipoPagoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{tipoPagoController.next}" value="#{lenguajes.Next} #{tipoPagoController.pagination.pageSize}" rendered="#{tipoPagoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{tipoPagoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListTipoPagoTitle_idTipoPago}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipoPago}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListTipoPagoTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListTipoPagoTitle_usuarioActualiza}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuarioActualiza}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListTipoPagoTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{tipoPagoController.prepareView}" value="#{lenguajes.ListTipoPagoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tipoPagoController.prepareEdit}" value="#{lenguajes.ListTipoPagoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tipoPagoController.destroy}" value="#{lenguajes.ListTipoPagoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{tipoPagoController.prepareCreate}" value="#{lenguajes.ListTipoPagoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ListTipoPagoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

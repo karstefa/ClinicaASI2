@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ListPacienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{lenguajes.ListPacienteEmpty}" rendered="#{pacienteController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{pacienteController.items.rowCount > 0}">
+                    <h:outputText value="#{pacienteController.pagination.pageFirstItem + 1}..#{pacienteController.pagination.pageLastItem + 1}/#{pacienteController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{pacienteController.previous}" value="#{lenguajes.Previous} #{pacienteController.pagination.pageSize}" rendered="#{pacienteController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{pacienteController.next}" value="#{lenguajes.Next} #{pacienteController.pagination.pageSize}" rendered="#{pacienteController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{pacienteController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListPacienteTitle_idPaciente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPaciente}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListPacienteTitle_usuarioActualiza}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuarioActualiza}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListPacienteTitle_fechaCreacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaCreacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListPacienteTitle_idPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListPacienteTitle_idEstadoPaciente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstadoPaciente}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{pacienteController.prepareView}" value="#{lenguajes.ListPacienteViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pacienteController.prepareEdit}" value="#{lenguajes.ListPacienteEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pacienteController.destroy}" value="#{lenguajes.ListPacienteDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{pacienteController.prepareCreate}" value="#{lenguajes.ListPacienteCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ListPacienteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

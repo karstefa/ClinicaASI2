@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.CreateDepartamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.CreateDepartamentoLabel_idDepartamento}" for="idDepartamento" />
+                    <h:inputText id="idDepartamento" value="#{departamentoController.selected.idDepartamento}" title="#{lenguajes.CreateDepartamentoTitle_idDepartamento}" required="true" requiredMessage="#{lenguajes.CreateDepartamentoRequiredMessage_idDepartamento}"/>
+                    <h:outputLabel value="#{lenguajes.CreateDepartamentoLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{departamentoController.selected.activo}" title="#{lenguajes.CreateDepartamentoTitle_activo}" required="true" requiredMessage="#{lenguajes.CreateDepartamentoRequiredMessage_activo}"/>
+                    <h:outputLabel value="#{lenguajes.CreateDepartamentoLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{departamentoController.selected.usuarioActualiza}" title="#{lenguajes.CreateDepartamentoTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.CreateDepartamentoRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.CreateDepartamentoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{departamentoController.selected.nombre}" title="#{lenguajes.CreateDepartamentoTitle_nombre}" required="true" requiredMessage="#{lenguajes.CreateDepartamentoRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{lenguajes.CreateDepartamentoLabel_idPais}" for="idPais" />
+                    <h:selectOneMenu id="idPais" value="#{departamentoController.selected.idPais}" title="#{lenguajes.CreateDepartamentoTitle_idPais}" required="true" requiredMessage="#{lenguajes.CreateDepartamentoRequiredMessage_idPais}">
+                        <f:selectItems value="#{paisController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{departamentoController.create}" value="#{lenguajes.CreateDepartamentoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{departamentoController.prepareList}" value="#{lenguajes.CreateDepartamentoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.CreateDepartamentoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

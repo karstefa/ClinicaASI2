@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.CreateProveedorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.CreateProveedorLabel_idProveedor}" for="idProveedor" />
+                    <h:inputText id="idProveedor" value="#{proveedorController.selected.idProveedor}" title="#{lenguajes.CreateProveedorTitle_idProveedor}" required="true" requiredMessage="#{lenguajes.CreateProveedorRequiredMessage_idProveedor}"/>
+                    <h:outputLabel value="#{lenguajes.CreateProveedorLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{proveedorController.selected.usuarioActualiza}" title="#{lenguajes.CreateProveedorTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.CreateProveedorRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.CreateProveedorLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{proveedorController.selected.activo}" title="#{lenguajes.CreateProveedorTitle_activo}" required="true" requiredMessage="#{lenguajes.CreateProveedorRequiredMessage_activo}"/>
+                    <h:outputLabel value="#{lenguajes.CreateProveedorLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{proveedorController.selected.nombre}" title="#{lenguajes.CreateProveedorTitle_nombre}" required="true" requiredMessage="#{lenguajes.CreateProveedorRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{lenguajes.CreateProveedorLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{proveedorController.selected.direccion}" title="#{lenguajes.CreateProveedorTitle_direccion}" required="true" requiredMessage="#{lenguajes.CreateProveedorRequiredMessage_direccion}"/>
+                    <h:outputLabel value="#{lenguajes.CreateProveedorLabel_contacto}" for="contacto" />
+                    <h:inputText id="contacto" value="#{proveedorController.selected.contacto}" title="#{lenguajes.CreateProveedorTitle_contacto}" required="true" requiredMessage="#{lenguajes.CreateProveedorRequiredMessage_contacto}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{proveedorController.create}" value="#{lenguajes.CreateProveedorSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{proveedorController.prepareList}" value="#{lenguajes.CreateProveedorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.CreateProveedorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

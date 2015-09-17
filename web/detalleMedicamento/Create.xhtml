@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.CreateDetalleMedicamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.CreateDetalleMedicamentoLabel_idDetalleMedicamento}" for="idDetalleMedicamento" />
+                    <h:inputText id="idDetalleMedicamento" value="#{detalleMedicamentoController.selected.idDetalleMedicamento}" title="#{lenguajes.CreateDetalleMedicamentoTitle_idDetalleMedicamento}" required="true" requiredMessage="#{lenguajes.CreateDetalleMedicamentoRequiredMessage_idDetalleMedicamento}"/>
+                    <h:outputLabel value="#{lenguajes.CreateDetalleMedicamentoLabel_fechaRecepcion}" for="fechaRecepcion" />
+                    <h:inputText id="fechaRecepcion" value="#{detalleMedicamentoController.selected.fechaRecepcion}" title="#{lenguajes.CreateDetalleMedicamentoTitle_fechaRecepcion}" required="true" requiredMessage="#{lenguajes.CreateDetalleMedicamentoRequiredMessage_fechaRecepcion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{lenguajes.CreateDetalleMedicamentoLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{detalleMedicamentoController.selected.usuarioActualiza}" title="#{lenguajes.CreateDetalleMedicamentoTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.CreateDetalleMedicamentoRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.CreateDetalleMedicamentoLabel_fechaFabricacion}" for="fechaFabricacion" />
+                    <h:inputText id="fechaFabricacion" value="#{detalleMedicamentoController.selected.fechaFabricacion}" title="#{lenguajes.CreateDetalleMedicamentoTitle_fechaFabricacion}" required="true" requiredMessage="#{lenguajes.CreateDetalleMedicamentoRequiredMessage_fechaFabricacion}"/>
+                    <h:outputLabel value="#{lenguajes.CreateDetalleMedicamentoLabel_fechaVencimiento}" for="fechaVencimiento" />
+                    <h:inputText id="fechaVencimiento" value="#{detalleMedicamentoController.selected.fechaVencimiento}" title="#{lenguajes.CreateDetalleMedicamentoTitle_fechaVencimiento}" required="true" requiredMessage="#{lenguajes.CreateDetalleMedicamentoRequiredMessage_fechaVencimiento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{lenguajes.CreateDetalleMedicamentoLabel_codigo}" for="codigo" />
+                    <h:inputText id="codigo" value="#{detalleMedicamentoController.selected.codigo}" title="#{lenguajes.CreateDetalleMedicamentoTitle_codigo}" required="true" requiredMessage="#{lenguajes.CreateDetalleMedicamentoRequiredMessage_codigo}"/>
+                    <h:outputLabel value="#{lenguajes.CreateDetalleMedicamentoLabel_idLoteMedicamento}" for="idLoteMedicamento" />
+                    <h:selectOneMenu id="idLoteMedicamento" value="#{detalleMedicamentoController.selected.idLoteMedicamento}" title="#{lenguajes.CreateDetalleMedicamentoTitle_idLoteMedicamento}" required="true" requiredMessage="#{lenguajes.CreateDetalleMedicamentoRequiredMessage_idLoteMedicamento}">
+                        <f:selectItems value="#{loteMedicamentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{lenguajes.CreateDetalleMedicamentoLabel_idEstadoDetalleMedicamento}" for="idEstadoDetalleMedicamento" />
+                    <h:selectOneMenu id="idEstadoDetalleMedicamento" value="#{detalleMedicamentoController.selected.idEstadoDetalleMedicamento}" title="#{lenguajes.CreateDetalleMedicamentoTitle_idEstadoDetalleMedicamento}" required="true" requiredMessage="#{lenguajes.CreateDetalleMedicamentoRequiredMessage_idEstadoDetalleMedicamento}">
+                        <f:selectItems value="#{estadoDetalleMedicamentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{detalleMedicamentoController.create}" value="#{lenguajes.CreateDetalleMedicamentoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{detalleMedicamentoController.prepareList}" value="#{lenguajes.CreateDetalleMedicamentoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.CreateDetalleMedicamentoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

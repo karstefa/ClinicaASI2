@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ViewLoteMedicamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{lenguajes.ViewLoteMedicamentoLabel_idLoteMedicamento}"/>
+                    <h:outputText value="#{loteMedicamentoController.selected.idLoteMedicamento}" title="#{lenguajes.ViewLoteMedicamentoTitle_idLoteMedicamento}"/>
+                    <h:outputText value="#{lenguajes.ViewLoteMedicamentoLabel_precioCosto}"/>
+                    <h:outputText value="#{loteMedicamentoController.selected.precioCosto}" title="#{lenguajes.ViewLoteMedicamentoTitle_precioCosto}"/>
+                    <h:outputText value="#{lenguajes.ViewLoteMedicamentoLabel_precioVenta}"/>
+                    <h:outputText value="#{loteMedicamentoController.selected.precioVenta}" title="#{lenguajes.ViewLoteMedicamentoTitle_precioVenta}"/>
+                    <h:outputText value="#{lenguajes.ViewLoteMedicamentoLabel_cantidadBodega}"/>
+                    <h:outputText value="#{loteMedicamentoController.selected.cantidadBodega}" title="#{lenguajes.ViewLoteMedicamentoTitle_cantidadBodega}"/>
+                    <h:outputText value="#{lenguajes.ViewLoteMedicamentoLabel_cantidadRecibida}"/>
+                    <h:outputText value="#{loteMedicamentoController.selected.cantidadRecibida}" title="#{lenguajes.ViewLoteMedicamentoTitle_cantidadRecibida}"/>
+                    <h:outputText value="#{lenguajes.ViewLoteMedicamentoLabel_catidadDefectuosa}"/>
+                    <h:outputText value="#{loteMedicamentoController.selected.catidadDefectuosa}" title="#{lenguajes.ViewLoteMedicamentoTitle_catidadDefectuosa}"/>
+                    <h:outputText value="#{lenguajes.ViewLoteMedicamentoLabel_cantidadSalida}"/>
+                    <h:outputText value="#{loteMedicamentoController.selected.cantidadSalida}" title="#{lenguajes.ViewLoteMedicamentoTitle_cantidadSalida}"/>
+                    <h:outputText value="#{lenguajes.ViewLoteMedicamentoLabel_idMedicamento}"/>
+                    <h:outputText value="#{loteMedicamentoController.selected.idMedicamento}" title="#{lenguajes.ViewLoteMedicamentoTitle_idMedicamento}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{loteMedicamentoController.destroyAndView}" value="#{lenguajes.ViewLoteMedicamentoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{lenguajes.ViewLoteMedicamentoEditLink}"/>
+                <br />
+                <h:commandLink action="#{loteMedicamentoController.prepareCreate}" value="#{lenguajes.ViewLoteMedicamentoCreateLink}" />
+                <br />
+                <h:commandLink action="#{loteMedicamentoController.prepareList}" value="#{lenguajes.ViewLoteMedicamentoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ViewLoteMedicamentoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

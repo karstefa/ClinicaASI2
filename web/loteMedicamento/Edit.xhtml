@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.EditLoteMedicamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.EditLoteMedicamentoLabel_idLoteMedicamento}" for="idLoteMedicamento" />
+                    <h:inputText id="idLoteMedicamento" value="#{loteMedicamentoController.selected.idLoteMedicamento}" title="#{lenguajes.EditLoteMedicamentoTitle_idLoteMedicamento}" required="true" requiredMessage="#{lenguajes.EditLoteMedicamentoRequiredMessage_idLoteMedicamento}"/>
+                    <h:outputLabel value="#{lenguajes.EditLoteMedicamentoLabel_precioCosto}" for="precioCosto" />
+                    <h:inputText id="precioCosto" value="#{loteMedicamentoController.selected.precioCosto}" title="#{lenguajes.EditLoteMedicamentoTitle_precioCosto}" required="true" requiredMessage="#{lenguajes.EditLoteMedicamentoRequiredMessage_precioCosto}"/>
+                    <h:outputLabel value="#{lenguajes.EditLoteMedicamentoLabel_precioVenta}" for="precioVenta" />
+                    <h:inputText id="precioVenta" value="#{loteMedicamentoController.selected.precioVenta}" title="#{lenguajes.EditLoteMedicamentoTitle_precioVenta}" required="true" requiredMessage="#{lenguajes.EditLoteMedicamentoRequiredMessage_precioVenta}"/>
+                    <h:outputLabel value="#{lenguajes.EditLoteMedicamentoLabel_cantidadBodega}" for="cantidadBodega" />
+                    <h:inputText id="cantidadBodega" value="#{loteMedicamentoController.selected.cantidadBodega}" title="#{lenguajes.EditLoteMedicamentoTitle_cantidadBodega}" required="true" requiredMessage="#{lenguajes.EditLoteMedicamentoRequiredMessage_cantidadBodega}"/>
+                    <h:outputLabel value="#{lenguajes.EditLoteMedicamentoLabel_cantidadRecibida}" for="cantidadRecibida" />
+                    <h:inputText id="cantidadRecibida" value="#{loteMedicamentoController.selected.cantidadRecibida}" title="#{lenguajes.EditLoteMedicamentoTitle_cantidadRecibida}" required="true" requiredMessage="#{lenguajes.EditLoteMedicamentoRequiredMessage_cantidadRecibida}"/>
+                    <h:outputLabel value="#{lenguajes.EditLoteMedicamentoLabel_catidadDefectuosa}" for="catidadDefectuosa" />
+                    <h:inputText id="catidadDefectuosa" value="#{loteMedicamentoController.selected.catidadDefectuosa}" title="#{lenguajes.EditLoteMedicamentoTitle_catidadDefectuosa}" required="true" requiredMessage="#{lenguajes.EditLoteMedicamentoRequiredMessage_catidadDefectuosa}"/>
+                    <h:outputLabel value="#{lenguajes.EditLoteMedicamentoLabel_cantidadSalida}" for="cantidadSalida" />
+                    <h:inputText id="cantidadSalida" value="#{loteMedicamentoController.selected.cantidadSalida}" title="#{lenguajes.EditLoteMedicamentoTitle_cantidadSalida}" required="true" requiredMessage="#{lenguajes.EditLoteMedicamentoRequiredMessage_cantidadSalida}"/>
+                    <h:outputLabel value="#{lenguajes.EditLoteMedicamentoLabel_idMedicamento}" for="idMedicamento" />
+                    <h:selectOneMenu id="idMedicamento" value="#{loteMedicamentoController.selected.idMedicamento}" title="#{lenguajes.EditLoteMedicamentoTitle_idMedicamento}" required="true" requiredMessage="#{lenguajes.EditLoteMedicamentoRequiredMessage_idMedicamento}">
+                        <f:selectItems value="#{medicamentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{loteMedicamentoController.update}" value="#{lenguajes.EditLoteMedicamentoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{lenguajes.EditLoteMedicamentoViewLink}"/>
+                <br />
+                <h:commandLink action="#{loteMedicamentoController.prepareList}" value="#{lenguajes.EditLoteMedicamentoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.EditLoteMedicamentoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.EditDetalleFacturaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.EditDetalleFacturaLabel_idDetalleFactura}" for="idDetalleFactura" />
+                    <h:inputText id="idDetalleFactura" value="#{detalleFacturaController.selected.idDetalleFactura}" title="#{lenguajes.EditDetalleFacturaTitle_idDetalleFactura}" required="true" requiredMessage="#{lenguajes.EditDetalleFacturaRequiredMessage_idDetalleFactura}"/>
+                    <h:outputLabel value="#{lenguajes.EditDetalleFacturaLabel_idFactura}" for="idFactura" />
+                    <h:inputText id="idFactura" value="#{detalleFacturaController.selected.idFactura}" title="#{lenguajes.EditDetalleFacturaTitle_idFactura}" required="true" requiredMessage="#{lenguajes.EditDetalleFacturaRequiredMessage_idFactura}"/>
+                    <h:outputLabel value="#{lenguajes.EditDetalleFacturaLabel_idDetalleMedicamento}" for="idDetalleMedicamento" />
+                    <h:inputText id="idDetalleMedicamento" value="#{detalleFacturaController.selected.idDetalleMedicamento}" title="#{lenguajes.EditDetalleFacturaTitle_idDetalleMedicamento}" />
+                    <h:outputLabel value="#{lenguajes.EditDetalleFacturaLabel_idConsulta}" for="idConsulta" />
+                    <h:inputText id="idConsulta" value="#{detalleFacturaController.selected.idConsulta}" title="#{lenguajes.EditDetalleFacturaTitle_idConsulta}" />
+                    <h:outputLabel value="#{lenguajes.EditDetalleFacturaLabel_precio}" for="precio" />
+                    <h:inputText id="precio" value="#{detalleFacturaController.selected.precio}" title="#{lenguajes.EditDetalleFacturaTitle_precio}" required="true" requiredMessage="#{lenguajes.EditDetalleFacturaRequiredMessage_precio}"/>
+                    <h:outputLabel value="#{lenguajes.EditDetalleFacturaLabel_porcentajeDescuento}" for="porcentajeDescuento" />
+                    <h:inputText id="porcentajeDescuento" value="#{detalleFacturaController.selected.porcentajeDescuento}" title="#{lenguajes.EditDetalleFacturaTitle_porcentajeDescuento}" required="true" requiredMessage="#{lenguajes.EditDetalleFacturaRequiredMessage_porcentajeDescuento}"/>
+                    <h:outputLabel value="#{lenguajes.EditDetalleFacturaLabel_idConsultaExamen}" for="idConsultaExamen" />
+                    <h:selectOneMenu id="idConsultaExamen" value="#{detalleFacturaController.selected.idConsultaExamen}" title="#{lenguajes.EditDetalleFacturaTitle_idConsultaExamen}" >
+                        <f:selectItems value="#{consultaExamenController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{detalleFacturaController.update}" value="#{lenguajes.EditDetalleFacturaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{lenguajes.EditDetalleFacturaViewLink}"/>
+                <br />
+                <h:commandLink action="#{detalleFacturaController.prepareList}" value="#{lenguajes.EditDetalleFacturaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.EditDetalleFacturaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

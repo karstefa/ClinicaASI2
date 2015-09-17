@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.EditMedicamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.EditMedicamentoLabel_idMedicamento}" for="idMedicamento" />
+                    <h:inputText id="idMedicamento" value="#{medicamentoController.selected.idMedicamento}" title="#{lenguajes.EditMedicamentoTitle_idMedicamento}" required="true" requiredMessage="#{lenguajes.EditMedicamentoRequiredMessage_idMedicamento}"/>
+                    <h:outputLabel value="#{lenguajes.EditMedicamentoLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{medicamentoController.selected.usuarioActualiza}" title="#{lenguajes.EditMedicamentoTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.EditMedicamentoRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.EditMedicamentoLabel_cantidadMinima}" for="cantidadMinima" />
+                    <h:inputText id="cantidadMinima" value="#{medicamentoController.selected.cantidadMinima}" title="#{lenguajes.EditMedicamentoTitle_cantidadMinima}" required="true" requiredMessage="#{lenguajes.EditMedicamentoRequiredMessage_cantidadMinima}"/>
+                    <h:outputLabel value="#{lenguajes.EditMedicamentoLabel_cantidadMaxima}" for="cantidadMaxima" />
+                    <h:inputText id="cantidadMaxima" value="#{medicamentoController.selected.cantidadMaxima}" title="#{lenguajes.EditMedicamentoTitle_cantidadMaxima}" required="true" requiredMessage="#{lenguajes.EditMedicamentoRequiredMessage_cantidadMaxima}"/>
+                    <h:outputLabel value="#{lenguajes.EditMedicamentoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{medicamentoController.selected.nombre}" title="#{lenguajes.EditMedicamentoTitle_nombre}" required="true" requiredMessage="#{lenguajes.EditMedicamentoRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{lenguajes.EditMedicamentoLabel_idProveedor}" for="idProveedor" />
+                    <h:selectOneMenu id="idProveedor" value="#{medicamentoController.selected.idProveedor}" title="#{lenguajes.EditMedicamentoTitle_idProveedor}" required="true" requiredMessage="#{lenguajes.EditMedicamentoRequiredMessage_idProveedor}">
+                        <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{lenguajes.EditMedicamentoLabel_idFabricante}" for="idFabricante" />
+                    <h:selectOneMenu id="idFabricante" value="#{medicamentoController.selected.idFabricante}" title="#{lenguajes.EditMedicamentoTitle_idFabricante}" required="true" requiredMessage="#{lenguajes.EditMedicamentoRequiredMessage_idFabricante}">
+                        <f:selectItems value="#{fabricanteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{medicamentoController.update}" value="#{lenguajes.EditMedicamentoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{lenguajes.EditMedicamentoViewLink}"/>
+                <br />
+                <h:commandLink action="#{medicamentoController.prepareList}" value="#{lenguajes.EditMedicamentoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.EditMedicamentoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

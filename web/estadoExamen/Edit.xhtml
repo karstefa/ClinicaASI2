@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.EditEstadoExamenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.EditEstadoExamenLabel_idEstadoExamen}" for="idEstadoExamen" />
+                    <h:inputText id="idEstadoExamen" value="#{estadoExamenController.selected.idEstadoExamen}" title="#{lenguajes.EditEstadoExamenTitle_idEstadoExamen}" required="true" requiredMessage="#{lenguajes.EditEstadoExamenRequiredMessage_idEstadoExamen}"/>
+                    <h:outputLabel value="#{lenguajes.EditEstadoExamenLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{estadoExamenController.selected.usuarioActualiza}" title="#{lenguajes.EditEstadoExamenTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.EditEstadoExamenRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.EditEstadoExamenLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{estadoExamenController.selected.nombre}" title="#{lenguajes.EditEstadoExamenTitle_nombre}" required="true" requiredMessage="#{lenguajes.EditEstadoExamenRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{lenguajes.EditEstadoExamenLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{estadoExamenController.selected.activo}" title="#{lenguajes.EditEstadoExamenTitle_activo}" required="true" requiredMessage="#{lenguajes.EditEstadoExamenRequiredMessage_activo}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{estadoExamenController.update}" value="#{lenguajes.EditEstadoExamenSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{lenguajes.EditEstadoExamenViewLink}"/>
+                <br />
+                <h:commandLink action="#{estadoExamenController.prepareList}" value="#{lenguajes.EditEstadoExamenShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.EditEstadoExamenIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ViewFabricanteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{lenguajes.ViewFabricanteLabel_idFabricante}"/>
+                    <h:outputText value="#{fabricanteController.selected.idFabricante}" title="#{lenguajes.ViewFabricanteTitle_idFabricante}"/>
+                    <h:outputText value="#{lenguajes.ViewFabricanteLabel_usuarioActualiza}"/>
+                    <h:outputText value="#{fabricanteController.selected.usuarioActualiza}" title="#{lenguajes.ViewFabricanteTitle_usuarioActualiza}"/>
+                    <h:outputText value="#{lenguajes.ViewFabricanteLabel_activo}"/>
+                    <h:outputText value="#{fabricanteController.selected.activo}" title="#{lenguajes.ViewFabricanteTitle_activo}"/>
+                    <h:outputText value="#{lenguajes.ViewFabricanteLabel_nombre}"/>
+                    <h:outputText value="#{fabricanteController.selected.nombre}" title="#{lenguajes.ViewFabricanteTitle_nombre}"/>
+                    <h:outputText value="#{lenguajes.ViewFabricanteLabel_direccion}"/>
+                    <h:outputText value="#{fabricanteController.selected.direccion}" title="#{lenguajes.ViewFabricanteTitle_direccion}"/>
+                    <h:outputText value="#{lenguajes.ViewFabricanteLabel_contacto}"/>
+                    <h:outputText value="#{fabricanteController.selected.contacto}" title="#{lenguajes.ViewFabricanteTitle_contacto}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{fabricanteController.destroyAndView}" value="#{lenguajes.ViewFabricanteDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{lenguajes.ViewFabricanteEditLink}"/>
+                <br />
+                <h:commandLink action="#{fabricanteController.prepareCreate}" value="#{lenguajes.ViewFabricanteCreateLink}" />
+                <br />
+                <h:commandLink action="#{fabricanteController.prepareList}" value="#{lenguajes.ViewFabricanteShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ViewFabricanteIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

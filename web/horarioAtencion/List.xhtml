@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ListHorarioAtencionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{lenguajes.ListHorarioAtencionEmpty}" rendered="#{horarioAtencionController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{horarioAtencionController.items.rowCount > 0}">
+                    <h:outputText value="#{horarioAtencionController.pagination.pageFirstItem + 1}..#{horarioAtencionController.pagination.pageLastItem + 1}/#{horarioAtencionController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{horarioAtencionController.previous}" value="#{lenguajes.Previous} #{horarioAtencionController.pagination.pageSize}" rendered="#{horarioAtencionController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{horarioAtencionController.next}" value="#{lenguajes.Next} #{horarioAtencionController.pagination.pageSize}" rendered="#{horarioAtencionController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{horarioAtencionController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListHorarioAtencionTitle_idHorarioAtencion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idHorarioAtencion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListHorarioAtencionTitle_usuarioActualiza}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuarioActualiza}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListHorarioAtencionTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListHorarioAtencionTitle_dia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dia}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListHorarioAtencionTitle_horaInicio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.horaInicio}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListHorarioAtencionTitle_horaFin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.horaFin}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lenguajes.ListHorarioAtencionTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{horarioAtencionController.prepareView}" value="#{lenguajes.ListHorarioAtencionViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{horarioAtencionController.prepareEdit}" value="#{lenguajes.ListHorarioAtencionEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{horarioAtencionController.destroy}" value="#{lenguajes.ListHorarioAtencionDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{horarioAtencionController.prepareCreate}" value="#{lenguajes.ListHorarioAtencionCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ListHorarioAtencionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

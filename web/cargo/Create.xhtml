@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.CreateCargoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.CreateCargoLabel_idCargo}" for="idCargo" />
+                    <h:inputText id="idCargo" value="#{cargoController.selected.idCargo}" title="#{lenguajes.CreateCargoTitle_idCargo}" required="true" requiredMessage="#{lenguajes.CreateCargoRequiredMessage_idCargo}"/>
+                    <h:outputLabel value="#{lenguajes.CreateCargoLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{cargoController.selected.activo}" title="#{lenguajes.CreateCargoTitle_activo}" required="true" requiredMessage="#{lenguajes.CreateCargoRequiredMessage_activo}"/>
+                    <h:outputLabel value="#{lenguajes.CreateCargoLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{cargoController.selected.usuarioActualiza}" title="#{lenguajes.CreateCargoTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.CreateCargoRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.CreateCargoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{cargoController.selected.nombre}" title="#{lenguajes.CreateCargoTitle_nombre}" required="true" requiredMessage="#{lenguajes.CreateCargoRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{lenguajes.CreateCargoLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{cargoController.selected.descripcion}" title="#{lenguajes.CreateCargoTitle_descripcion}" required="true" requiredMessage="#{lenguajes.CreateCargoRequiredMessage_descripcion}"/>
+                    <h:outputLabel value="#{lenguajes.CreateCargoLabel_parentIDCARGO}" for="parentIDCARGO" />
+                    <h:selectOneMenu id="parentIDCARGO" value="#{cargoController.selected.parentIDCARGO}" title="#{lenguajes.CreateCargoTitle_parentIDCARGO}" required="true" requiredMessage="#{lenguajes.CreateCargoRequiredMessage_parentIDCARGO}">
+                        <f:selectItems value="#{cargoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{cargoController.create}" value="#{lenguajes.CreateCargoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{cargoController.prepareList}" value="#{lenguajes.CreateCargoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.CreateCargoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.EditDireccionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{lenguajes.EditDireccionLabel_idDireccion}" for="idDireccion" />
+                    <h:inputText id="idDireccion" value="#{direccionController.selected.idDireccion}" title="#{lenguajes.EditDireccionTitle_idDireccion}" required="true" requiredMessage="#{lenguajes.EditDireccionRequiredMessage_idDireccion}"/>
+                    <h:outputLabel value="#{lenguajes.EditDireccionLabel_usuarioActualiza}" for="usuarioActualiza" />
+                    <h:inputText id="usuarioActualiza" value="#{direccionController.selected.usuarioActualiza}" title="#{lenguajes.EditDireccionTitle_usuarioActualiza}" required="true" requiredMessage="#{lenguajes.EditDireccionRequiredMessage_usuarioActualiza}"/>
+                    <h:outputLabel value="#{lenguajes.EditDireccionLabel_referencia}" for="referencia" />
+                    <h:inputText id="referencia" value="#{direccionController.selected.referencia}" title="#{lenguajes.EditDireccionTitle_referencia}" required="true" requiredMessage="#{lenguajes.EditDireccionRequiredMessage_referencia}"/>
+                    <h:outputLabel value="#{lenguajes.EditDireccionLabel_idPersona}" for="idPersona" />
+                    <h:selectOneMenu id="idPersona" value="#{direccionController.selected.idPersona}" title="#{lenguajes.EditDireccionTitle_idPersona}" required="true" requiredMessage="#{lenguajes.EditDireccionRequiredMessage_idPersona}">
+                        <f:selectItems value="#{personaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{lenguajes.EditDireccionLabel_idMunicipio}" for="idMunicipio" />
+                    <h:selectOneMenu id="idMunicipio" value="#{direccionController.selected.idMunicipio}" title="#{lenguajes.EditDireccionTitle_idMunicipio}" required="true" requiredMessage="#{lenguajes.EditDireccionRequiredMessage_idMunicipio}">
+                        <f:selectItems value="#{municipioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{direccionController.update}" value="#{lenguajes.EditDireccionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{lenguajes.EditDireccionViewLink}"/>
+                <br />
+                <h:commandLink action="#{direccionController.prepareList}" value="#{lenguajes.EditDireccionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.EditDireccionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

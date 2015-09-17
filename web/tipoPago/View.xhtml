@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{lenguajes.ViewTipoPagoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{lenguajes.ViewTipoPagoLabel_idTipoPago}"/>
+                    <h:outputText value="#{tipoPagoController.selected.idTipoPago}" title="#{lenguajes.ViewTipoPagoTitle_idTipoPago}"/>
+                    <h:outputText value="#{lenguajes.ViewTipoPagoLabel_activo}"/>
+                    <h:outputText value="#{tipoPagoController.selected.activo}" title="#{lenguajes.ViewTipoPagoTitle_activo}"/>
+                    <h:outputText value="#{lenguajes.ViewTipoPagoLabel_usuarioActualiza}"/>
+                    <h:outputText value="#{tipoPagoController.selected.usuarioActualiza}" title="#{lenguajes.ViewTipoPagoTitle_usuarioActualiza}"/>
+                    <h:outputText value="#{lenguajes.ViewTipoPagoLabel_nombre}"/>
+                    <h:outputText value="#{tipoPagoController.selected.nombre}" title="#{lenguajes.ViewTipoPagoTitle_nombre}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoPagoController.destroyAndView}" value="#{lenguajes.ViewTipoPagoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{lenguajes.ViewTipoPagoEditLink}"/>
+                <br />
+                <h:commandLink action="#{tipoPagoController.prepareCreate}" value="#{lenguajes.ViewTipoPagoCreateLink}" />
+                <br />
+                <h:commandLink action="#{tipoPagoController.prepareList}" value="#{lenguajes.ViewTipoPagoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{lenguajes.ViewTipoPagoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
